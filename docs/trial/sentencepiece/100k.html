@@ -1,0 +1,379 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tokenization the data &mdash; mt 1.0-alpha ドキュメント</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="検索" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> mt
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../build.html">Build</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Trial and Error</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../graph.html">Graph</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">mt</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Tokenization the data</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/trial/sentencepiece/100k.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+/* nice headers on first paragraph of info/warning boxes */
+.admonition .first {
+    margin: -12px;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+    color: #fff;
+    line-height: 1;
+    display: block;
+}
+.admonition.warning .first {
+    background: #f0b37e;
+}
+.admonition.note .first {
+    background: #6ab0de;
+}
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+</style>
+<p><span class="xref std std-term">KFTT</span> コーパスのtrainデータから、100000 sentenceに絞って学習させる。</p>
+<div class="section" id="tokenization-the-data">
+<h1>Tokenization the data<a class="headerlink" href="#tokenization-the-data" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p><span class="xref std std-term">SentencePiece</span> を用いてトークン化を行う。</p>
+<ol class="arabic">
+<li><p class="first">Train SentencePiece Model</p>
+<p><span class="xref std std-term">SentencePiece</span> でトークン化を行うためのモデルの学習を行う</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> /data/kftt-data-1.0/data/orig
+<span class="gp">#</span> mkdir ../sp
+<span class="gp">#</span> ls <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> f<span class="p">;</span>
+<span class="go">  do</span>
+<span class="go">    /root/sentencepiece/bin/spm_train --input=${f} \</span>
+<span class="go">                                      --model_prefix=../sp/${f} ;</span>
+<span class="go">  done</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Encode raw text into sentence pieces</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="k">for</span> l in ja en<span class="p">;</span>
+<span class="go">  do</span>
+<span class="go">    for f in *.${l};</span>
+<span class="go">    do</span>
+<span class="go">      /root/sentencepiece/bin/spm_encode --model=../sp/${l}.model \</span>
+<span class="go">                                         --output_format=piece &lt; ${f} &gt; ../sp/${f}.tok;</span>
+<span class="go">    done;</span>
+<span class="go">  done</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="preprocess-the-data">
+<h1>Preprocess the data<a class="headerlink" href="#preprocess-the-data" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">実行コマンド</span><a class="headerlink" href="#id1" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> th preprocess.lua -train_src /data/kftt-data-1.0/data/sp/kyoto-train.ja.100k.tok <span class="se">\</span>
+                    -train_tgt /data/kftt-data-1.0/data/sp/kyoto-train.en.100k.tok <span class="se">\</span>
+                    -valid_src /data/kftt-data-1.0/data/sp/kyoto-dev.ja.tok <span class="se">\</span>
+                    -valid_tgt /data/kftt-data-1.0/data/sp/kyoto-dev.en.tok <span class="se">\</span>
+                    -save_data /data/kyoto-train.100k <span class="se">\</span>
+                    -log_file /data/log/train.100k.log <span class="se">\</span>
+                    -save_config /data/config/preprocess.train.100k.yml
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="train-the-model">
+<h1>Train the model<a class="headerlink" href="#train-the-model" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">実行コマンド</span><a class="headerlink" href="#id2" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> th train.lua -data /data/kyoto-train.100k-train.t7 <span class="se">\</span>
+               -save_model /data/kyoto-100k-model <span class="se">\</span>
+               -log_file /data/log/train.train.100k.log <span class="se">\</span>
+               -save_config /data/config/train.train.100k.yml
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="translate">
+<h1>Translate<a class="headerlink" href="#translate" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">実行コマンド</span><a class="headerlink" href="#id3" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> th translate.lua -model /data/kyoto-100k-model_epoch13_40.45.t7 <span class="se">\</span>
+                   -src /data/kftt-data-1.0/data/tok/kyoto-test.ja <span class="se">\</span>
+                   -output /data/kyoto-100k-pred.txt <span class="se">\</span>
+                   -log_file /data/log/translate.train.100k.log <span class="se">\</span>
+                   -save_config /data/config/translate.train.100k.yml
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="score">
+<h1>Score<a class="headerlink" href="#score" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="bleu">
+<h2>BLEU<a class="headerlink" href="#bleu" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">実行コマンド</span><a class="headerlink" href="#id4" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> th tools/score.lua /data/kftt-data-1.0/data/tok/kyoto-test.ja <span class="se">\</span>
+                     -scorer bleu <span class="se">\</span>
+                     -save_config /data/config/score-bleu.train.100k.yml <span class="se">\</span>
+                     &lt; /data/kyoto-100k-pred.txt
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">実行結果</span><a class="headerlink" href="#id5" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">0.00                BLEU = 0.00, 0.6/0.0/0.0/0.0 (BP=1.000, ratio=1.302, hyp_len=37105, ref_len=28501)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="ter">
+<h2>TER<a class="headerlink" href="#ter" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">実行コマンド</span><a class="headerlink" href="#id6" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> th tools/score.lua /data/kftt-data-1.0/data/tok/kyoto-test.ja <span class="se">\</span>
+                     -scorer ter <span class="se">\</span>
+                     -save_config /data/config/score-ter.train.100k.yml <span class="se">\</span>
+                     &lt; /data/kyoto-100k-pred.txt
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">実行結果</span><a class="headerlink" href="#id7" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">133.53               TER = 133.53 (Ins 8.1, Del 2.3, Sub 37.2, Shft 0.0, WdSh 0.0)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="dlratio">
+<h2>DLRATIO<a class="headerlink" href="#dlratio" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">実行コマンド</span><a class="headerlink" href="#id8" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> th tools/score.lua /data/kftt-data-1.0/data/tok/kyoto-test.ja <span class="se">\</span>
+                     -scorer dlratio <span class="se">\</span>
+                     -save_config /data/config/score-dlratio.train.100k.yml <span class="se">\</span>
+                     &lt; /data/kyoto-100k-pred.txt
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">実行結果</span><a class="headerlink" href="#id9" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">144.44               nil</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Hideo Suzuki.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.0-alpha',
+            LANGUAGE:'ja',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>
