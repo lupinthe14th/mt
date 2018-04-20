@@ -1,0 +1,13 @@
+md = false
+disable_logs = false
+config = 
+rfilestem = /data/kftt-data-1.0/data/tok/kyoto-test.ja
+log_level = INFO
+save_config = 
+log_file = 
+h = false
+log_tag = 
+order = 4
+tokenizer = space
+sample = 1
+scorer = ter

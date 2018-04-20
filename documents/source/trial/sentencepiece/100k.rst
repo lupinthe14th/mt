@@ -1,0 +1,158 @@
+:term:`KFTT` コーパスのtrainデータから、100000 sentenceに絞って学習させる。
+
+Tokenization the data
+-------------------------------------------------------------------------------
+
+:term:`SentencePiece` を用いてトークン化を行う。
+
+#. Train SentencePiece Model
+
+   :term:`SentencePiece` でトークン化を行うためのモデルの学習を行う
+
+   .. code-block:: console
+
+      # /data/kftt-data-1.0/data/orig
+      # mkdir ../sp
+      # ls | while read f;
+        do
+          /root/sentencepiece/bin/spm_train --input=${f} \
+                                            --model_prefix=../sp/${f} ;
+        done
+
+
+#. Encode raw text into sentence pieces
+
+   .. code-block:: console
+
+      # for l in ja en; 
+        do
+          for f in *.${l};
+          do
+            /root/sentencepiece/bin/spm_encode --model=../sp/${l}.model \
+                                               --output_format=piece < ${f} > ../sp/${f}.tok;
+          done;
+        done
+
+
+Preprocess the data
+-------------------------------------------------------------------------------
+
+.. code-block:: console
+   :caption: 実行コマンド
+
+   # th preprocess.lua -train_src /data/kftt-data-1.0/data/sp/kyoto-train.ja.100k.tok \
+                       -train_tgt /data/kftt-data-1.0/data/sp/kyoto-train.en.100k.tok \
+                       -valid_src /data/kftt-data-1.0/data/sp/kyoto-dev.ja.tok \
+                       -valid_tgt /data/kftt-data-1.0/data/sp/kyoto-dev.en.tok \
+                       -save_data /data/kyoto-train.100k \
+                       -log_file /data/log/train.100k.log \
+                       -save_config /data/config/preprocess.train.100k.yml
+
+.. literalinclude:: ../../../data/config/preprocess.train.100k.yml
+   :language: yaml
+   :caption: コンフィグ
+
+.. literalinclude:: ../../../data/log/preprocess.train.100k.log
+   :caption: 実行ログ
+
+Train the model
+-------------------------------------------------------------------------------
+
+.. code-block:: console
+   :caption: 実行コマンド
+
+   # th train.lua -data /data/kyoto-train.100k-train.t7 \
+                  -save_model /data/kyoto-100k-model \
+                  -log_file /data/log/train.train.100k.log \
+                  -save_config /data/config/train.train.100k.yml
+
+.. literalinclude:: ../../../data/config/train.train.100k.yml
+   :language: yaml
+   :caption: コンフィグ
+
+
+.. literalinclude:: ../../../data/log/train.train.100k.log
+   :caption: 実行ログ
+
+Translate
+-------------------------------------------------------------------------------
+
+.. code-block:: console
+   :caption: 実行コマンド
+
+   # th translate.lua -model /data/kyoto-100k-model_epoch13_40.45.t7 \
+                      -src /data/kftt-data-1.0/data/tok/kyoto-test.ja \
+                      -output /data/kyoto-100k-pred.txt \
+                      -log_file /data/log/translate.train.100k.log \
+                      -save_config /data/config/translate.train.100k.yml
+
+.. literalinclude:: ../../../data/config/translate.train.100k.yml
+   :language: yaml
+   :caption: コンフィグ
+
+
+.. literalinclude:: ../../../data/log/translate.train.100k.log
+   :caption: 実行ログ
+
+Score
+-------------------------------------------------------------------------------
+
+BLEU
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+   :caption: 実行コマンド
+
+   # th tools/score.lua /data/kftt-data-1.0/data/tok/kyoto-test.ja \
+                        -scorer bleu \
+                        -save_config /data/config/score-bleu.train.100k.yml \
+                        < /data/kyoto-100k-pred.txt
+
+.. literalinclude:: ../../../data/config/score-bleu.train.100k.yml
+   :language: yaml
+   :caption: コンフィグ
+
+.. code-block:: console
+   :caption: 実行結果
+
+   0.00                BLEU = 0.00, 0.6/0.0/0.0/0.0 (BP=1.000, ratio=1.302, hyp_len=37105, ref_len=28501)
+
+TER
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+   :caption: 実行コマンド
+
+   # th tools/score.lua /data/kftt-data-1.0/data/tok/kyoto-test.ja \
+                        -scorer ter \
+                        -save_config /data/config/score-ter.train.100k.yml \
+                        < /data/kyoto-100k-pred.txt
+
+.. literalinclude:: ../../../data/config/score-ter.train.100k.yml
+   :language: yaml
+   :caption: コンフィグ
+
+.. code-block:: console
+   :caption: 実行結果
+
+   133.53               TER = 133.53 (Ins 8.1, Del 2.3, Sub 37.2, Shft 0.0, WdSh 0.0)   
+
+DLRATIO
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: console
+   :caption: 実行コマンド
+
+   # th tools/score.lua /data/kftt-data-1.0/data/tok/kyoto-test.ja \
+                        -scorer dlratio \
+                        -save_config /data/config/score-dlratio.train.100k.yml \
+                        < /data/kyoto-100k-pred.txt
+
+.. literalinclude:: ../../../data/config/score-dlratio.train.100k.yml
+   :language: yaml
+   :caption: コンフィグ
+
+.. code-block:: console
+   :caption: 実行結果
+
+   144.44               nil

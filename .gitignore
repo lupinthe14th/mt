@@ -1,0 +1,6 @@
+*.t7
+*.gz
+*.dict
+*.bz2
+
+.ipynb_checkpoints/

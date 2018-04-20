@@ -1,0 +1,15 @@
+---
+version: "3.6"
+services:
+  train:
+    image: opennmt/opennmt:latest
+    volumes:
+      - ./data:/data
+
+  rest:
+    image: opennmt/opennmt:latest
+    volumes:
+      - ./data:/data
+    command: th tools/rest_translation_server.lua -config /data/rest.yml
+    ports:
+      - 7784:7784
