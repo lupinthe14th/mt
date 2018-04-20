@@ -42,7 +42,7 @@ Docker Compose
 サービス単位で構成して簡単に使いたいため、Docker Composeを利用する。
 
 .. literalinclude:: ../../docker-compose.yml
-   :language: yml
+   :language: yaml
    :caption: Docker Compose構成ファイル
 
 
