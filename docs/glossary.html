@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="ja" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
@@ -9,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>索引 &mdash; mt 1.0-alpha ドキュメント</title>
+  <title>用語集 &mdash; mt 1.0-alpha ドキュメント</title>
   
 
   
@@ -28,7 +27,7 @@
   
     <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="index" title="索引" href="#" />
+    <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="検索" href="search.html" /> 
 
   
@@ -126,18 +125,25 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>索引</li>
+      <li>用語集</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
+            
+              <!-- User defined GitHub URL -->
+              <a href="" class="fa fa-github"> Edit on GitHub</a>
+            
+          
         
       </li>
     
@@ -149,39 +155,65 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
 
-<h1 id="index">索引</h1>
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
 
-<div class="genindex-jumpbox">
- <a href="#K"><strong>K</strong></a>
- | <a href="#S"><strong>S</strong></a>
- | <a href="#京"><strong>京</strong></a>
- 
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+/* nice headers on first paragraph of info/warning boxes */
+.admonition .first {
+    margin: -12px;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+    color: #fff;
+    line-height: 1;
+    display: block;
+}
+.admonition.warning .first {
+    background: #f0b37e;
+}
+.admonition.note .first {
+    background: #6ab0de;
+}
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+</style>
+<div class="section" id="glossary">
+<span id="id1"></span><h1>用語集<a class="headerlink" href="#glossary" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<dl class="glossary docutils">
+<dt id="term-sentencepiece">sentencepiece</dt>
+<dd><p class="first">ニューラル言語処理向けトークナイザ</p>
+<div class="last admonition seealso">
+<p class="first admonition-title">参考</p>
+<ul class="last simple">
+<li><a class="reference external" href="https://github.com/google/sentencepiece">https://github.com/google/sentencepiece</a></li>
+<li><a class="reference external" href="https://qiita.com/taku910/items/7e52f1e58d0ea6e7859c">https://qiita.com/taku910/items/7e52f1e58d0ea6e7859c</a></li>
+</ul>
 </div>
-<h2 id="K">K</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="glossary.html#term-kftt"><strong>kftt</strong></a>
-</li>
-  </ul></td>
-</tr></table>
-
-<h2 id="S">S</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="glossary.html#term-sentencepiece"><strong>sentencepiece</strong></a>
-</li>
-  </ul></td>
-</tr></table>
-
-<h2 id="京">京</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="glossary.html#term"><strong>京都フリー翻訳タスク</strong></a>
-</li>
-  </ul></td>
-</tr></table>
-
+</dd>
+<dt id="term-kftt">kftt<dt id="term">京都フリー翻訳タスク</dt>
+<dd><p class="first">日英機械翻訳システムのための評価タスクです。
+タスクはフリー、簡単、再現性のある、進化型の機械翻訳タスクを目指して設立されました。</p>
+<div class="last admonition seealso">
+<p class="first admonition-title">参考</p>
+<ul class="last simple">
+<li><a class="reference external" href="http://www.phontron.com/kftt/">http://www.phontron.com/kftt/</a></li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
 
 
            </div>

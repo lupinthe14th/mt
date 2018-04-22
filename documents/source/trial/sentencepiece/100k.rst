@@ -1,3 +1,5 @@
+:github_url:
+
 :term:`KFTT` コーパスのtrainデータから、100000 sentenceに絞って学習させる。
 
 Tokenization the data
@@ -10,29 +12,58 @@ Tokenization the data
    :term:`SentencePiece` でトークン化を行うためのモデルの学習を行う
 
    .. code-block:: console
+      :caption: 実行コマンド
 
-      # /data/kftt-data-1.0/data/orig
+      # cd /data/kftt-data-1.0/data/orig
       # mkdir ../sp
-      # ls | while read f;
-        do
-          /root/sentencepiece/bin/spm_train --input=${f} \
-                                            --model_prefix=../sp/${f} ;
-        done
+      # list=$(ls -m | sed -e ':loop;N;$!b loop;s/\n/ /g' -e 's/ //g')
+      # /root/sentencepiece/bin/spm_train --input=${list} \
+                                          --hard_vocab_limit=false \
+                                          --model_prefix=../sp/kyoto-train \
+        > /data/log/spm_train.train.100k.log 2>&1
+
+
+   .. literalinclude:: ../../../data/log/spm_train.train.100k.log
+      :caption: 実行ログ
 
 
 #. Encode raw text into sentence pieces
 
    .. code-block:: console
+      :caption: 実行コマンドとログ
 
-      # for l in ja en; 
+      # cd /root/opennmt/
+      # for f in $(ls /data/kftt-data-1.0/data/orig);
         do
-          for f in *.${l};
-          do
-            /root/sentencepiece/bin/spm_encode --model=../sp/${l}.model \
-                                               --output_format=piece < ${f} > ../sp/${f}.tok;
-          done;
+          th tools/tokenize.lua -hook_file hooks/sentencepiece \
+                                -sentencepiece /data/kftt-data-1.0/data/sp/kyoto-train.model \
+                                -mode aggressive \
+                                -joiner_annotate \
+                                -save_config /data/config/tokenize.train.100k.${f}.yml \
+                                < /data/kftt-data-1.0/data/orig/${f} \
+                                > /data/kftt-data-1.0/data/sp/${f}.tok ;
         done
+        Tokenization completed in 0.208 seconds - 1166 sentences
+        Tokenization completed in 0.218 seconds - 1166 sentences
+        Tokenization completed in 0.231 seconds - 1160 sentences
+        Tokenization completed in 0.241 seconds - 1160 sentences
+        Tokenization completed in 96.344 seconds - 440288 sentences
+        Tokenization completed in 109.339 seconds - 440288 sentences
+        Tokenization completed in 0.327 seconds - 1235 sentences
+        Tokenization completed in 0.329 seconds - 1235 sentences
 
+   .. literalinclude:: ../../../data/config/tokenize.train.100k.kyoto-train.en.yml
+      :caption: 実行コンフィグ
+
+#. 絞り込み
+
+   .. code-block:: console
+
+      # for l in ja en;
+        do
+          head -100000 /data/kftt-data-1.0/data/sp/kyoto-train.${l}.tok \
+               > /data/kftt-data-1.0/data/sp/kyoto-train.${l}.100k.tok;
+        done
 
 Preprocess the data
 -------------------------------------------------------------------------------
@@ -40,12 +71,17 @@ Preprocess the data
 .. code-block:: console
    :caption: 実行コマンド
 
-   # th preprocess.lua -train_src /data/kftt-data-1.0/data/sp/kyoto-train.ja.100k.tok \
+   # th preprocess.lua -hook_file hooks/sentencepiece \
+                       -train_src /data/kftt-data-1.0/data/sp/kyoto-train.ja.100k.tok \
                        -train_tgt /data/kftt-data-1.0/data/sp/kyoto-train.en.100k.tok \
                        -valid_src /data/kftt-data-1.0/data/sp/kyoto-dev.ja.tok \
                        -valid_tgt /data/kftt-data-1.0/data/sp/kyoto-dev.en.tok \
+                       -tok_src_mode aggressive \ 
+                       -tok_tgt_mode aggressive \ 
+                       -tok_src_joiner_annotate true \
+                       -tok_tgt_joiner_annotate true \
                        -save_data /data/kyoto-train.100k \
-                       -log_file /data/log/train.100k.log \
+                       -log_file /data/log/preprocess.train.100k.log \
                        -save_config /data/config/preprocess.train.100k.yml
 
 .. literalinclude:: ../../../data/config/preprocess.train.100k.yml
@@ -61,7 +97,12 @@ Train the model
 .. code-block:: console
    :caption: 実行コマンド
 
-   # th train.lua -data /data/kyoto-train.100k-train.t7 \
+   # th train.lua -hook_file hooks/sentencepiece \
+                  -data /data/kyoto-train.100k-train.t7 \
+                  -tok_src_mode aggressive \ 
+                  -tok_tgt_mode aggressive \ 
+                  -tok_src_joiner_annotate true \
+                  -tok_tgt_joiner_annotate true \
                   -save_model /data/kyoto-100k-model \
                   -log_file /data/log/train.train.100k.log \
                   -save_config /data/config/train.train.100k.yml
@@ -80,8 +121,8 @@ Translate
 .. code-block:: console
    :caption: 実行コマンド
 
-   # th translate.lua -model /data/kyoto-100k-model_epoch13_40.45.t7 \
-                      -src /data/kftt-data-1.0/data/tok/kyoto-test.ja \
+   # th translate.lua -model /data/kyoto-100k-model_epoch13_7.91.t7 \
+                      -src /data/kftt-data-1.0/data/sp/kyoto-test.ja.tok \
                       -output /data/kyoto-100k-pred.txt \
                       -log_file /data/log/translate.train.100k.log \
                       -save_config /data/config/translate.train.100k.yml
@@ -115,7 +156,7 @@ BLEU
 .. code-block:: console
    :caption: 実行結果
 
-   0.00                BLEU = 0.00, 0.6/0.0/0.0/0.0 (BP=1.000, ratio=1.302, hyp_len=37105, ref_len=28501)
+   0.00         BLEU = 0.00, 0.2/0.0/0.0/0.0 (BP=1.000, ratio=1.453, hyp_len=41419, ref_len=28501)
 
 TER
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -135,7 +176,7 @@ TER
 .. code-block:: console
    :caption: 実行結果
 
-   133.53               TER = 133.53 (Ins 8.1, Del 2.3, Sub 37.2, Shft 0.0, WdSh 0.0)   
+   149.95          TER = 149.95 (Ins 10.1, Del 3.9, Sub 35.8, Shft 0.0, WdSh 0.0)
 
 DLRATIO
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -155,4 +196,4 @@ DLRATIO
 .. code-block:: console
    :caption: 実行結果
 
-   144.44               nil
+   148.74          nil

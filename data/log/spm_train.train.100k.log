@@ -1,0 +1,95 @@
+unigram_model_trainer.cc(486) LOG(INFO) Starts training with : 
+input: "kyoto-dev.en"
+input: "kyoto-dev.ja"
+input: "kyoto-test.en"
+input: "kyoto-test.ja"
+input: "kyoto-train.en"
+input: "kyoto-train.ja"
+input: "kyoto-tune.en"
+input: "kyoto-tune.ja"
+model_prefix: "../sp/kyoto-train"
+model_type: UNIGRAM
+vocab_size: 8000
+input_format: ""
+character_coverage: 0.9995
+input_sentence_size: 10000000
+mining_sentence_size: 2000000
+training_sentence_size: 10000000
+seed_sentencepiece_size: 1000000
+shrinking_factor: 0.75
+num_threads: 16
+num_sub_iterations: 2
+max_sentencepiece_length: 16
+split_by_unicode_script: true
+split_by_whitespace: true
+hard_vocab_limit: false
+unk_id: 0
+bos_id: 1
+eos_id: 2
+pad_id: -1
+
+trainer_interface.cc(124) LOG(INFO) Loading corpus: kyoto-dev.en
+trainer_interface.cc(151) LOG(INFO) Loading: ▁Rinzai▁Zen▁Buddhism▁is▁one▁of▁the▁Chinese▁five▁Houses/seven▁Schools▁of▁Zen▁(Rinzai,▁Igyou,▁Soto,▁Unmon,▁Hogan)▁and▁Gigen▁RINZAI▁(?▁-▁867)▁of▁Tang▁was▁its▁founder.	size=0
+trainer_interface.cc(124) LOG(INFO) Loading corpus: kyoto-dev.ja
+trainer_interface.cc(124) LOG(INFO) Loading corpus: kyoto-test.en
+trainer_interface.cc(124) LOG(INFO) Loading corpus: kyoto-test.ja
+trainer_interface.cc(124) LOG(INFO) Loading corpus: kyoto-train.en
+trainer_interface.cc(151) LOG(INFO) Loading: ▁Ango▁SAKAGUCHI▁wrote▁a▁novel▁"Ao-oni▁no▁fundoshi▁wo▁arau▁onna"▁(The▁Woman▁Who▁Washes▁the▁Blue▁Demon's▁Loincloth)▁in▁which▁he▁described▁"fundoshi▁wo▁arau▁onna▁=▁watashi"▁(literally,▁"I▁am▁a▁woman▁who▁washes▁men's▁fundoshi▁loincloth")▁as▁a▁symbolic▁case▁of▁job-sharing▁between▁men▁and▁women.	size=100000
+trainer_interface.cc(151) LOG(INFO) Loading: ▁Japan's▁cession▁of▁Taiwan▁under▁the▁Treaty▁of▁Shimonoseki▁came▁as▁a▁surprise▁to▁the▁people▁living▁in▁Taiwan.	size=200000
+trainer_interface.cc(157) LOG(WARNING) Empty string found. removed
+trainer_interface.cc(151) LOG(INFO) Loading: ▁After▁the▁fall▁of▁Yoshinaka▁and▁the▁Heike▁family,▁he▁came▁back▁to▁Kyoto▁and▁served▁Imperial▁Prince▁Morisada▁who▁returned▁from▁the▁Saikai▁(provinces▁on▁the▁western▁seacoast)▁with▁his▁wife.	size=300000
+trainer_interface.cc(157) LOG(WARNING) Empty string found. removed
+trainer_interface.cc(151) LOG(INFO) Loading: ▁Kamanza-dori▁Street,▁which▁did▁not▁exist▁in▁Heiankyo,▁was▁built▁by▁Hideyoshi▁TOYOTOMI▁during▁his▁Kyoto▁restructuring▁plan▁(Tensho▁zoning).	size=400000
+trainer_interface.cc(124) LOG(INFO) Loading corpus: kyoto-train.ja
+trainer_interface.cc(151) LOG(INFO) Loading: ▁減酸が緩やかなため他の極早生品種に比べて収穫時期が遅れるがその分食味は長く保たれる。	size=500000
+trainer_interface.cc(151) LOG(INFO) Loading: ▁立地を活かし、倉庫・物流拠点としての利用もある。	size=600000
+trainer_interface.cc(151) LOG(INFO) Loading: ▁豊国主尊(とよくにむしのみこと)	size=700000
+trainer_interface.cc(151) LOG(INFO) Loading: ▁四代目・秀右衛門永貞は、長岡藩の修史事業に中心的な役割を果たし、諸士由緒記などを編纂した。	size=800000
+trainer_interface.cc(124) LOG(INFO) Loading corpus: kyoto-tune.en
+trainer_interface.cc(124) LOG(INFO) Loading corpus: kyoto-tune.ja
+trainer_interface.cc(171) LOG(INFO) Loaded 887696 sentences
+trainer_interface.cc(189) LOG(INFO) all chars count=77573032
+trainer_interface.cc(196) LOG(INFO) Done: 99.9501% characters are covered.
+trainer_interface.cc(204) LOG(INFO) alphabet size=3054
+trainer_interface.cc(235) LOG(INFO) Done! 887696 sentences are loaded
+unigram_model_trainer.cc(117) LOG(INFO) Using 887696 sentences for making seed sentencepieces
+unigram_model_trainer.cc(145) LOG(INFO) Making suffix array...
+unigram_model_trainer.cc(149) LOG(INFO) Extracting frequent sub strings...
+unigram_model_trainer.cc(200) LOG(INFO) Initialized 1000000 seed sentencepieces
+trainer_interface.cc(239) LOG(INFO) Tokenizing input sentences with whitespace: 887696
+trainer_interface.cc(248) LOG(INFO) Done! 891095
+unigram_model_trainer.cc(505) LOG(INFO) Using 891095 sentences for EM training
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=0 size=598593 obj=19.3799 num_tokens=7754784 num_tokens/piece=12.955
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=1 size=516677 obj=16.1595 num_tokens=7790715 num_tokens/piece=15.0785
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=0 size=386993 obj=16.1455 num_tokens=7920181 num_tokens/piece=20.466
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=1 size=386108 obj=16.1203 num_tokens=7933095 num_tokens/piece=20.5463
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=0 size=289539 obj=16.2262 num_tokens=8159194 num_tokens/piece=28.1799
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=1 size=289499 obj=16.1936 num_tokens=8160497 num_tokens/piece=28.1883
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=0 size=217120 obj=16.361 num_tokens=8452017 num_tokens/piece=38.9279
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=1 size=217117 obj=16.3171 num_tokens=8453578 num_tokens/piece=38.9356
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=0 size=162836 obj=16.5415 num_tokens=8783580 num_tokens/piece=53.9413
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=1 size=162834 obj=16.4951 num_tokens=8784354 num_tokens/piece=53.9467
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=0 size=122125 obj=16.7664 num_tokens=9145806 num_tokens/piece=74.8889
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=1 size=122125 obj=16.7139 num_tokens=9145980 num_tokens/piece=74.8903
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=0 size=91593 obj=17.0319 num_tokens=9537395 num_tokens/piece=104.128
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=1 size=91593 obj=16.9754 num_tokens=9539119 num_tokens/piece=104.147
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=0 size=68694 obj=17.3324 num_tokens=9960322 num_tokens/piece=144.996
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=1 size=68694 obj=17.2705 num_tokens=9961562 num_tokens/piece=145.014
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=0 size=51520 obj=17.668 num_tokens=10411557 num_tokens/piece=202.088
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=1 size=51520 obj=17.5986 num_tokens=10411520 num_tokens/piece=202.087
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=0 size=38640 obj=18.0425 num_tokens=10901243 num_tokens/piece=282.123
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=1 size=38640 obj=17.9645 num_tokens=10901378 num_tokens/piece=282.127
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=0 size=28980 obj=18.4651 num_tokens=11434602 num_tokens/piece=394.569
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=1 size=28980 obj=18.3762 num_tokens=11434619 num_tokens/piece=394.569
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=0 size=21735 obj=18.9458 num_tokens=12023596 num_tokens/piece=553.191
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=1 size=21735 obj=18.8455 num_tokens=12023592 num_tokens/piece=553.19
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=0 size=16301 obj=19.498 num_tokens=12654276 num_tokens/piece=776.288
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=1 size=16301 obj=19.3817 num_tokens=12654339 num_tokens/piece=776.292
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=0 size=12225 obj=20.1421 num_tokens=13343432 num_tokens/piece=1091.49
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=1 size=12225 obj=20.0041 num_tokens=13343570 num_tokens/piece=1091.5
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=0 size=9168 obj=20.9154 num_tokens=14148085 num_tokens/piece=1543.2
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=1 size=9168 obj=20.7486 num_tokens=14148126 num_tokens/piece=1543.21
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=0 size=8800 obj=20.8771 num_tokens=14266980 num_tokens/piece=1621.25
+unigram_model_trainer.cc(521) LOG(INFO) EM sub_iter=1 size=8800 obj=20.8533 num_tokens=14267009 num_tokens/piece=1621.25
+trainer_interface.cc(294) LOG(INFO) Saving model: ../sp/kyoto-train.model
+trainer_interface.cc(303) LOG(INFO) Saving vocabs: ../sp/kyoto-train.vocab
