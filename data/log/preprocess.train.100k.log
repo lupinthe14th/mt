@@ -1,36 +1,44 @@
-[04/17/18 23:56:56 INFO] Using on-the-fly 'space' tokenization for input 1
-[04/17/18 23:56:56 INFO] Using on-the-fly 'space' tokenization for input 2
-[04/17/18 23:56:56 INFO] Preparing vocabulary...
-[04/17/18 23:56:56 INFO]  * Building source vocabularies...
-[04/17/18 23:56:58 INFO]  * Created word dictionary of size 8595 (pruned from 8595)
-[04/17/18 23:56:58 INFO] 
-[04/17/18 23:56:58 INFO]  * Building target vocabularies...
-[04/17/18 23:57:00 INFO]  * Created word dictionary of size 9596 (pruned from 9596)
-[04/17/18 23:57:00 INFO] 
-[04/17/18 23:57:00 INFO] Preparing training data...
-[04/17/18 23:57:00 INFO] --- Preparing train sample
-[04/17/18 23:57:06 INFO]  * [-] file '/data/kftt-data-1.0/data/sp/kyoto-train.ja.100k.tok' (): 100000 total, 100000 drawn, 80875 kept - unknown words: source = 0.0%, target = 0.0%
-[04/17/18 23:57:06 INFO] ... shuffling sentences
-[04/17/18 23:57:07 INFO] ... sorting sentences by size
-[04/17/18 23:57:07 INFO] Prepared 80875 sentences:
-[04/17/18 23:57:07 INFO]  * 19125 sequences not validated (length, other)
-[04/17/18 23:57:07 INFO]  * average sequence length: source = 19.8, target = 23.9
-[04/17/18 23:57:07 INFO]  * source sentence length (range of 10): [ 16% ; 25% ; 23% ; 15% ; 9% ; 4% ; 2% ; 1% ; 0% ; 0% ]
-[04/17/18 23:57:07 INFO]  * target sentence length (range of 10): [ 12% ; 20% ; 20% ; 16% ; 11% ; 7% ; 4% ; 2% ; 1% ; 2% ]
-[04/17/18 23:57:07 INFO] 
-[04/17/18 23:57:07 INFO] 
-[04/17/18 23:57:07 INFO] Preparing validation data...
-[04/17/18 23:57:07 INFO] --- Preparing valid sample
-[04/17/18 23:57:07 INFO]  * [-] file '/data/kftt-data-1.0/data/sp/kyoto-dev.ja.tok' (): 1166 total, 1166 drawn, 992 kept - unknown words: source = 0.1%, target = 0.2%
-[04/17/18 23:57:07 INFO] ... shuffling sentences
-[04/17/18 23:57:07 INFO] ... sorting sentences by size
-[04/17/18 23:57:07 INFO] Prepared 992 sentences:
-[04/17/18 23:57:07 INFO]  * 174 sequences not validated (length, other)
-[04/17/18 23:57:07 INFO]  * average sequence length: source = 16.9, target = 19.7
-[04/17/18 23:57:07 INFO]  * source sentence length (range of 10): [ 29% ; 26% ; 13% ; 12% ; 8% ; 3% ; 2% ; 1% ; 0% ; 0% ]
-[04/17/18 23:57:07 INFO]  * target sentence length (range of 10): [ 27% ; 20% ; 15% ; 12% ; 9% ; 5% ; 3% ; 2% ; 1% ; 1% ]
-[04/17/18 23:57:07 INFO] 
-[04/17/18 23:57:07 INFO] 
-[04/17/18 23:57:07 INFO] Saving source vocabulary to '/data/kyoto-train.100k.src.dict'...
-[04/17/18 23:57:07 INFO] Saving target vocabulary to '/data/kyoto-train.100k.tgt.dict'...
-[04/17/18 23:57:07 INFO] Saving data to '/data/kyoto-train.100k-train.t7'...
+[04/22/18 06:10:06 INFO] Register hook 'declareOpts' from hooks/sentencepiece
+[04/22/18 06:10:06 INFO] Register hook 'tokenize' from hooks/sentencepiece
+[04/22/18 06:10:06 INFO] Register hook 'hookName' from hooks/sentencepiece
+[04/22/18 06:10:06 INFO] Register hook 'detokenize' from hooks/sentencepiece
+[04/22/18 06:10:06 INFO] Using on-the-fly 'aggressive' tokenization for input 1
+[04/22/18 06:10:06 INFO] Using on-the-fly 'aggressive' tokenization for input 2
+[04/22/18 06:10:06 INFO] Register hook 'declareOpts' from hooks/sentencepiece
+[04/22/18 06:10:06 INFO] Register hook 'tokenize' from hooks/sentencepiece
+[04/22/18 06:10:06 INFO] Register hook 'hookName' from hooks/sentencepiece
+[04/22/18 06:10:06 INFO] Register hook 'detokenize' from hooks/sentencepiece
+[04/22/18 06:10:06 INFO] Preparing vocabulary...
+[04/22/18 06:10:06 INFO]  * Building source vocabularies...
+[04/22/18 06:10:08 INFO]  * Created word dictionary of size 6442 (pruned from 6442)
+[04/22/18 06:10:08 INFO] 
+[04/22/18 06:10:08 INFO]  * Building target vocabularies...
+[04/22/18 06:10:10 INFO]  * Created word dictionary of size 4713 (pruned from 4713)
+[04/22/18 06:10:10 INFO] 
+[04/22/18 06:10:10 INFO] Preparing training data...
+[04/22/18 06:10:10 INFO] --- Preparing train sample
+[04/22/18 06:10:55 INFO]  * [-] file '/data/kftt-data-1.0/data/sp/kyoto-train.ja.100k.tok' (): 100000 total, 100000 drawn, 41966 kept - unknown words: source = 2.5%, target = 42.6%
+[04/22/18 06:10:55 INFO] ... shuffling sentences
+[04/22/18 06:10:55 INFO] ... sorting sentences by size
+[04/22/18 06:10:56 INFO] Prepared 41966 sentences:
+[04/22/18 06:10:56 INFO]  * 58034 sequences not validated (length, other)
+[04/22/18 06:10:56 INFO]  * average sequence length: source = 18.5, target = 28.0
+[04/22/18 06:10:56 INFO]  * source sentence length (range of 10): [ 10% ; 14% ; 16% ; 15% ; 12% ; 9% ; 6% ; 4% ; 3% ; 6% ]
+[04/22/18 06:10:56 INFO]  * target sentence length (range of 10): [ 5% ; 6% ; 8% ; 10% ; 10% ; 9% ; 8% ; 7% ; 6% ; 25% ]
+[04/22/18 06:10:56 INFO] 
+[04/22/18 06:10:56 INFO] 
+[04/22/18 06:10:56 INFO] Preparing validation data...
+[04/22/18 06:10:56 INFO] --- Preparing valid sample
+[04/22/18 06:10:56 INFO]  * [-] file '/data/kftt-data-1.0/data/sp/kyoto-dev.ja.tok' (): 1166 total, 1166 drawn, 635 kept - unknown words: source = 2.3%, target = 40.6%
+[04/22/18 06:10:56 INFO] ... shuffling sentences
+[04/22/18 06:10:56 INFO] ... sorting sentences by size
+[04/22/18 06:10:56 INFO] Prepared 635 sentences:
+[04/22/18 06:10:56 INFO]  * 531 sequences not validated (length, other)
+[04/22/18 06:10:56 INFO]  * average sequence length: source = 15.8, target = 22.4
+[04/22/18 06:10:56 INFO]  * source sentence length (range of 10): [ 22% ; 12% ; 16% ; 11% ; 10% ; 6% ; 5% ; 4% ; 2% ; 7% ]
+[04/22/18 06:10:56 INFO]  * target sentence length (range of 10): [ 11% ; 14% ; 11% ; 8% ; 7% ; 7% ; 6% ; 6% ; 4% ; 21% ]
+[04/22/18 06:10:56 INFO] 
+[04/22/18 06:10:56 INFO] 
+[04/22/18 06:10:56 INFO] Saving source vocabulary to '/data/kyoto-train.100k.src.dict'...
+[04/22/18 06:10:56 INFO] Saving target vocabulary to '/data/kyoto-train.100k.tgt.dict'...
+[04/22/18 06:10:56 INFO] Saving data to '/data/kyoto-train.100k-train.t7'...

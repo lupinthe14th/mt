@@ -137,6 +137,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -149,7 +151,10 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/build.rst.txt" rel="nofollow"> View page source</a>
+            
+              <!-- User defined GitHub URL -->
+              <a href="" class="fa fa-github"> Edit on GitHub</a>
+            
           
         
       </li>
@@ -197,13 +202,13 @@
 }
 </style>
 <div class="section" id="build">
-<h1>Build<a class="headerlink" href="#build" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<span id="id1"></span><h1>Build<a class="headerlink" href="#build" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <p><span class="xref std std-term">OpenNMT</span> の <span class="xref std std-term">Lua</span> 実装のDockerバージョンを利用する。</p>
 <div class="section" id="install">
 <h2>Install<a class="headerlink" href="#install" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="docker">
 <h3>Docker<a class="headerlink" href="#docker" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p>Dockerhubのイメージは、　Dockerfileを比べる限り <span class="xref std std-term">SentencePiece</span>
+<p>Dockerhubのイメージは、　Dockerfileを比べる限り <a class="reference internal" href="glossary.html#term-sentencepiece"><span class="xref std std-term">SentencePiece</span></a>
 のインストール が含まれていないため、github
 リポジトリのDockerfileを利用して、Dockerイメージ をBuildする。</p>
 <ol class="arabic">
@@ -220,7 +225,7 @@
 </div>
 <div class="admonition note">
 <p class="first admonition-title">注釈</p>
-<p class="last">私の利用した環境 <a class="footnote-reference" href="#localenv" id="id1">[1]</a> では、5時間ほどかかった</p>
+<p class="last">私の利用した環境 <a class="footnote-reference" href="#localenv" id="id2">[1]</a> では、5時間ほどかかった</p>
 </div>
 </li>
 </ol>
@@ -231,8 +236,8 @@
 <div class="section" id="docker-compose">
 <h3>Docker Compose<a class="headerlink" href="#docker-compose" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>サービス単位で構成して簡単に使いたいため、Docker Composeを利用する。</p>
-<div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-text">Docker Compose構成ファイル</span><a class="headerlink" href="#id2" title="このコードへのパーマリンク">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Docker Compose構成ファイル</span><a class="headerlink" href="#id3" title="このコードへのパーマリンク">¶</a></div>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="s">&quot;3.6&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">services</span><span class="p p-Indicator">:</span>
@@ -248,13 +253,21 @@
     <span class="l l-Scalar l-Scalar-Plain">command</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">th tools/rest_translation_server.lua -config /data/rest.yml</span>
     <span class="l l-Scalar l-Scalar-Plain">ports</span><span class="p p-Indicator">:</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">7784:7784</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">0mq</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">image</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">opennmt/opennmt:latest</span>
+    <span class="l l-Scalar l-Scalar-Plain">volumes</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">./data:/data</span>
+    <span class="l l-Scalar l-Scalar-Plain">command</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">th tools/translation_server.lua -config /data/0mq.yml</span>
+    <span class="l l-Scalar l-Scalar-Plain">ports</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">5556:5556</span>
 </pre></div>
 </div>
 </div>
 <table class="docutils footnote" frame="void" id="localenv" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><ul class="first last simple">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td><ul class="first last simple">
 <li>MacBook</li>
 <li>NTT光</li>
 <li>so-net</li>
