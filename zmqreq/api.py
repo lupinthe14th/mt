@@ -1,59 +1,54 @@
 import zmq
-from argparse import ArgumentParser, SUPPRESS
-import json
+from argparse import ArgumentParser
 
-from logging import basicConfig, getLogger, DEBUG
+from logging import getLogger
 
-from japronto import Application
+from sanic import Sanic
+from sanic.response import json
 
-logger = getLogger(__name__)
+import sentencepiece as spm
 
+logger = getLogger('root')
 
-def unhandled(request):
-    1 / 0
-
-
-def transate(srcList):
-    try:
-        logger.debug("srcList :{}".format(srcList))
-        sock.send_string('[{"src": "日本語"}]', encoding='utf-8')
-        recv = sock.recv_string(encoding='utf-8')
-        logger.debug("recv :{}".format(recv))
-        logger.debug("type(recv) :{}".format(type(recv)))
-        code = 200
-        message = recv
-    except Exception as e:
-        logger.error("{0}: {1}".format(type(e), e))
-        code = 500
-        message = {'message': format(e)}
-    finally:
-        return code, message
-
-def transate_handler(request):
-    text = """Body related properties:
-      Mime type: {0.mime_type}
-      Encoding: {0.encoding}
-      Body: {0.body}
-      Text: {0.text}
-      Form parameters: {0.form}
-      Files: {0.files}
-    """.format(request)
-
-    try:
-        transateList = request.text
-    except Exception as e:
-        logger.error("{0}: {1}".format(type(e), e))
-    else:
-        text += "\nJSON:\n"
-        text += str(transateList)
-
-    logger.debug("request :{}".format(text))
-
-    return request.Response(transate(transateList))
+app = Sanic()
 
 
-def hello(request):
-    return request.Response(text='Hello world!')
+@app.route('/transate', methods=['POST'])
+async def transate_handler(request):
+    logger.debug("request.json :{}".format(request.json))
+    sock.send_json(tokenize(request.json))
+    recv = sock.recv_json()
+    logger.debug("recv :{}".format(recv))
+    logger.debug("type(recv) :{}".format(type(recv)))
+    return json(deTokenize(recv))
+
+
+def tokenize(jsonData):
+    logger.debug("jsonData: {}".format(jsonData))
+    for j in jsonData:
+        logger.debug("src: {}".format(j['src']))
+        j['src'] = " ".join(sp.EncodeAsPieces(j['src']))
+        logger.debug("src: {}".format(j['src']))
+
+    logger.debug("jsonData: {}".format(jsonData))
+    return jsonData
+
+
+def deTokenize(lists):
+    logger.debug("Lists: {}".format(lists))
+    for dictList in lists:
+        logger.debug("dictList: {}".format(dictList))
+        for dic in dictList:
+            logger.debug("dic: {}".format(dic))
+            logger.debug("tgt: {}".format(dic['tgt']))
+            logger.debug("tgt.split(): {}".format(dic['tgt'].split()))
+            dic['tgt'] = sp.DecodePieces(dic['tgt'].split())
+            dic['src'] = sp.DecodePieces(dic['src'].split())
+            logger.debug("tgt: {}".format(dic['tgt']))
+        logger.debug("dictList: {}".format(dictList))
+
+    logger.debug("lists: {}".format(lists))
+    return lists
 
 
 if __name__ == '__main__':
@@ -61,7 +56,7 @@ if __name__ == '__main__':
     parser.add_argument('--debug', default=False)
     parser.add_argument('--host', dest='host', type=str, default='0.0.0.0')
     parser.add_argument('--port', dest='port', type=int, default=8080)
-    parser.add_argument('--worker-num', dest='worker_num', type=int, default=1)
+    parser.add_argument('--workers', dest='workers', type=int, default=1)
     args = parser.parse_args()
 
     # ZeroMQ Context
@@ -69,15 +64,12 @@ if __name__ == '__main__':
 
     # Define the socket using the "Context"
     sock = context.socket(zmq.REQ)  # pylint: disable=E1101
-    sock.connect("tcp://127.0.0.1:5556")
+    sock.connect("tcp://zmqrep:5556")
 
-    # init logLevel
-    if args.debug:
-        basicConfig(level=DEBUG)
+    # Sentencepiece init
+    sp = spm.SentencePieceProcessor()
+    sp.Load("/data/kftt-data-1.0/data/sp/kyoto-train.model")
+    # sp.Load("/data/kftt-data-1.0/data/sp/en.model")
 
-    app = Application()
-    app.router.add_route('/', hello)
-    app.router.add_route('/unhandled', unhandled)
-    app.router.add_route('/v1/transate', transate_handler, methods=['POST'])
     app.run(debug=args.debug, host=args.host,
-            port=args.port, worker_num=args.worker_num)
+            port=args.port, workers=args.workers)

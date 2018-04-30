@@ -6,18 +6,20 @@ services:
     volumes:
       - ./data:/data
 
-  rest:
+  zmqrep:
     image: opennmt/opennmt:latest
     volumes:
       - ./data:/data
-    command: th tools/rest_translation_server.lua -config /data/rest.yml
-    ports:
-      - 7784:7784
+    command: th tools/translation_server.lua -config /data/zmqrep.yml
 
-  0mq:
-    image: opennmt/opennmt:latest
+  zmqreq:
+    image: opennmt/zmqreq:latest
+    build:
+      context: ./zmqreq
+      dockerfile: Dockerfile
     volumes:
       - ./data:/data
-    command: th tools/translation_server.lua -config /data/0mq.yml
+      - ./zmqreq:/usr/src/app
+    command: python api.py --port 8080 --host 0.0.0.0 --debug true
     ports:
-      - 5556:5556
+      - 8080:8080
