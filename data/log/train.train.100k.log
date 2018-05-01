@@ -1,339 +1,457 @@
-[04/18/18 00:14:23 INFO] Training Sequence to Sequence with Attention model...
-[04/18/18 00:14:23 INFO] Loading data from '/data/kyoto-train.100k-train.t7'...
-[04/18/18 00:14:26 INFO]  * vocabulary size: source = 8595; target = 9596
-[04/18/18 00:14:26 INFO]  * additional features: source = 0; target = 0
-[04/18/18 00:14:26 INFO]  * maximum sequence length: source = 50; target = 51
-[04/18/18 00:14:26 INFO]  * number of training sentences: 80875
-[04/18/18 00:14:26 INFO]  * number of batches: 975
-[04/18/18 00:14:26 INFO]    - source sequence lengths: equal
-[04/18/18 00:14:26 INFO]    - maximum size: 160 sentences / 1800 tokens
-[04/18/18 00:14:26 INFO]    - average size: 82.95
-[04/18/18 00:14:26 INFO]    - capacity: 100.00%
-[04/18/18 00:14:26 INFO] Building model...
-[04/18/18 00:14:26 INFO]  * Encoder:
-[04/18/18 00:14:27 INFO]    - word embeddings size: 500
-[04/18/18 00:14:27 INFO]    - type: unidirectional RNN
-[04/18/18 00:14:27 INFO]    - structure: cell = LSTM; layers = 2; rnn_size = 500; dropout = 0.3 (naive)
-[04/18/18 00:14:27 INFO]  * Decoder:
-[04/18/18 00:14:27 INFO]    - word embeddings size: 500
-[04/18/18 00:14:27 INFO]    - attention: global (general)
-[04/18/18 00:14:27 INFO]    - structure: cell = LSTM; layers = 2; rnn_size = 500; dropout = 0.3 (naive)
-[04/18/18 00:14:27 INFO]  * Bridge: copy
-[04/18/18 00:14:27 INFO] Initializing parameters...
-[04/18/18 00:14:28 INFO]  * number of parameters: 23669096
-[04/18/18 00:14:28 INFO] Preparing memory optimization...
-[04/18/18 00:14:29 INFO]  * sharing 69% of output/gradInput tensors memory between clones
-[04/18/18 00:14:29 INFO] Preallocating memory
-[04/18/18 00:14:44 INFO] Start training from epoch 1 to 13...
-[04/18/18 00:14:44 INFO] 
-[04/18/18 00:19:15 INFO] Epoch 1 ; Iteration 50/975 ; Optim SGD LR 1.000000 ; Source tokens/s 287 ; Perplexity 26572.82
-[04/18/18 00:23:52 INFO] Epoch 1 ; Iteration 100/975 ; Optim SGD LR 1.000000 ; Source tokens/s 299 ; Perplexity 3992.23
-[04/18/18 00:28:28 INFO] Epoch 1 ; Iteration 150/975 ; Optim SGD LR 1.000000 ; Source tokens/s 284 ; Perplexity 2232.46
-[04/18/18 00:33:16 INFO] Epoch 1 ; Iteration 200/975 ; Optim SGD LR 1.000000 ; Source tokens/s 283 ; Perplexity 1479.28
-[04/18/18 00:38:45 INFO] Epoch 1 ; Iteration 250/975 ; Optim SGD LR 1.000000 ; Source tokens/s 256 ; Perplexity 985.01
-[04/18/18 00:44:12 INFO] Epoch 1 ; Iteration 300/975 ; Optim SGD LR 1.000000 ; Source tokens/s 244 ; Perplexity 882.67
-[04/18/18 00:49:29 INFO] Epoch 1 ; Iteration 350/975 ; Optim SGD LR 1.000000 ; Source tokens/s 256 ; Perplexity 703.86
-[04/18/18 00:54:36 INFO] Epoch 1 ; Iteration 400/975 ; Optim SGD LR 1.000000 ; Source tokens/s 269 ; Perplexity 616.36
-[04/18/18 01:00:07 INFO] Epoch 1 ; Iteration 450/975 ; Optim SGD LR 1.000000 ; Source tokens/s 239 ; Perplexity 531.46
-[04/18/18 01:05:53 INFO] Epoch 1 ; Iteration 500/975 ; Optim SGD LR 1.000000 ; Source tokens/s 242 ; Perplexity 447.75
-[04/18/18 01:11:30 INFO] Epoch 1 ; Iteration 550/975 ; Optim SGD LR 1.000000 ; Source tokens/s 250 ; Perplexity 395.76
-[04/18/18 01:17:14 INFO] Epoch 1 ; Iteration 600/975 ; Optim SGD LR 1.000000 ; Source tokens/s 236 ; Perplexity 348.87
-[04/18/18 01:22:39 INFO] Epoch 1 ; Iteration 650/975 ; Optim SGD LR 1.000000 ; Source tokens/s 243 ; Perplexity 323.91
-[04/18/18 01:28:17 INFO] Epoch 1 ; Iteration 700/975 ; Optim SGD LR 1.000000 ; Source tokens/s 253 ; Perplexity 290.87
-[04/18/18 01:33:57 INFO] Epoch 1 ; Iteration 750/975 ; Optim SGD LR 1.000000 ; Source tokens/s 243 ; Perplexity 269.60
-[04/18/18 01:39:37 INFO] Epoch 1 ; Iteration 800/975 ; Optim SGD LR 1.000000 ; Source tokens/s 251 ; Perplexity 255.36
-[04/18/18 01:45:16 INFO] Epoch 1 ; Iteration 850/975 ; Optim SGD LR 1.000000 ; Source tokens/s 241 ; Perplexity 236.99
-[04/18/18 01:50:58 INFO] Epoch 1 ; Iteration 900/975 ; Optim SGD LR 1.000000 ; Source tokens/s 253 ; Perplexity 223.22
-[04/18/18 01:56:40 INFO] Epoch 1 ; Iteration 950/975 ; Optim SGD LR 1.000000 ; Source tokens/s 248 ; Perplexity 214.08
-[04/18/18 01:59:16 INFO] Epoch 1 ; Iteration 975/975 ; Optim SGD LR 1.000000 ; Source tokens/s 221 ; Perplexity 197.90
-[04/18/18 01:59:16 INFO] Evaluating on the validation dataset...
-[04/18/18 01:59:52 INFO] Validation perplexity: 372.88
-[04/18/18 01:59:52 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch1_372.88.t7'...
-[04/18/18 01:59:55 INFO] 
-[04/18/18 02:05:38 INFO] Epoch 2 ; Iteration 50/975 ; Optim SGD LR 1.000000 ; Source tokens/s 232 ; Perplexity 200.05
-[04/18/18 02:11:10 INFO] Epoch 2 ; Iteration 100/975 ; Optim SGD LR 1.000000 ; Source tokens/s 240 ; Perplexity 188.24
-[04/18/18 02:16:20 INFO] Epoch 2 ; Iteration 150/975 ; Optim SGD LR 1.000000 ; Source tokens/s 251 ; Perplexity 184.33
-[04/18/18 02:21:52 INFO] Epoch 2 ; Iteration 200/975 ; Optim SGD LR 1.000000 ; Source tokens/s 247 ; Perplexity 180.00
-[04/18/18 02:27:38 INFO] Epoch 2 ; Iteration 250/975 ; Optim SGD LR 1.000000 ; Source tokens/s 246 ; Perplexity 170.37
-[04/18/18 02:33:32 INFO] Epoch 2 ; Iteration 300/975 ; Optim SGD LR 1.000000 ; Source tokens/s 232 ; Perplexity 158.19
-[04/18/18 02:38:48 INFO] Epoch 2 ; Iteration 350/975 ; Optim SGD LR 1.000000 ; Source tokens/s 262 ; Perplexity 167.25
-[04/18/18 02:44:04 INFO] Epoch 2 ; Iteration 400/975 ; Optim SGD LR 1.000000 ; Source tokens/s 252 ; Perplexity 156.64
-[04/18/18 02:50:09 INFO] Epoch 2 ; Iteration 450/975 ; Optim SGD LR 1.000000 ; Source tokens/s 230 ; Perplexity 150.71
-[04/18/18 02:56:11 INFO] Epoch 2 ; Iteration 500/975 ; Optim SGD LR 1.000000 ; Source tokens/s 229 ; Perplexity 145.82
-[04/18/18 03:01:58 INFO] Epoch 2 ; Iteration 550/975 ; Optim SGD LR 1.000000 ; Source tokens/s 225 ; Perplexity 142.56
-[04/18/18 03:07:46 INFO] Epoch 2 ; Iteration 600/975 ; Optim SGD LR 1.000000 ; Source tokens/s 231 ; Perplexity 142.34
-[04/18/18 03:13:34 INFO] Epoch 2 ; Iteration 650/975 ; Optim SGD LR 1.000000 ; Source tokens/s 222 ; Perplexity 138.13
-[04/18/18 03:19:34 INFO] Epoch 2 ; Iteration 700/975 ; Optim SGD LR 1.000000 ; Source tokens/s 229 ; Perplexity 135.55
-[04/18/18 03:25:24 INFO] Epoch 2 ; Iteration 750/975 ; Optim SGD LR 1.000000 ; Source tokens/s 241 ; Perplexity 131.09
-[04/18/18 03:31:07 INFO] Epoch 2 ; Iteration 800/975 ; Optim SGD LR 1.000000 ; Source tokens/s 249 ; Perplexity 131.24
-[04/18/18 03:36:59 INFO] Epoch 2 ; Iteration 850/975 ; Optim SGD LR 1.000000 ; Source tokens/s 241 ; Perplexity 129.11
-[04/18/18 03:42:23 INFO] Epoch 2 ; Iteration 900/975 ; Optim SGD LR 1.000000 ; Source tokens/s 253 ; Perplexity 128.82
-[04/18/18 03:48:38 INFO] Epoch 2 ; Iteration 950/975 ; Optim SGD LR 1.000000 ; Source tokens/s 224 ; Perplexity 118.50
-[04/18/18 03:51:37 INFO] Epoch 2 ; Iteration 975/975 ; Optim SGD LR 1.000000 ; Source tokens/s 235 ; Perplexity 119.90
-[04/18/18 03:51:37 INFO] Evaluating on the validation dataset...
-[04/18/18 03:52:13 INFO] Validation perplexity: 186.85
-[04/18/18 03:52:13 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch2_186.85.t7'...
-[04/18/18 03:52:16 INFO] 
-[04/18/18 03:58:11 INFO] Epoch 3 ; Iteration 50/975 ; Optim SGD LR 1.000000 ; Source tokens/s 220 ; Perplexity 113.28
-[04/18/18 04:03:56 INFO] Epoch 3 ; Iteration 100/975 ; Optim SGD LR 1.000000 ; Source tokens/s 237 ; Perplexity 111.23
-[04/18/18 04:09:31 INFO] Epoch 3 ; Iteration 150/975 ; Optim SGD LR 1.000000 ; Source tokens/s 245 ; Perplexity 113.30
-[04/18/18 04:15:31 INFO] Epoch 3 ; Iteration 200/975 ; Optim SGD LR 1.000000 ; Source tokens/s 230 ; Perplexity 109.23
-[04/18/18 04:21:48 INFO] Epoch 3 ; Iteration 250/975 ; Optim SGD LR 1.000000 ; Source tokens/s 215 ; Perplexity 108.07
-[04/18/18 04:28:21 INFO] Epoch 3 ; Iteration 300/975 ; Optim SGD LR 1.000000 ; Source tokens/s 198 ; Perplexity 101.76
-[04/18/18 04:34:22 INFO] Epoch 3 ; Iteration 350/975 ; Optim SGD LR 1.000000 ; Source tokens/s 229 ; Perplexity 104.74
-[04/18/18 04:40:02 INFO] Epoch 3 ; Iteration 400/975 ; Optim SGD LR 1.000000 ; Source tokens/s 239 ; Perplexity 106.10
-[04/18/18 04:45:37 INFO] Epoch 3 ; Iteration 450/975 ; Optim SGD LR 1.000000 ; Source tokens/s 249 ; Perplexity 105.79
-[04/18/18 04:51:39 INFO] Epoch 3 ; Iteration 500/975 ; Optim SGD LR 1.000000 ; Source tokens/s 233 ; Perplexity 100.86
-[04/18/18 04:57:20 INFO] Epoch 3 ; Iteration 550/975 ; Optim SGD LR 1.000000 ; Source tokens/s 235 ; Perplexity 103.29
-[04/18/18 05:03:27 INFO] Epoch 3 ; Iteration 600/975 ; Optim SGD LR 1.000000 ; Source tokens/s 212 ; Perplexity 92.12
-[04/18/18 05:09:29 INFO] Epoch 3 ; Iteration 650/975 ; Optim SGD LR 1.000000 ; Source tokens/s 227 ; Perplexity 98.44
-[04/18/18 05:15:19 INFO] Epoch 3 ; Iteration 700/975 ; Optim SGD LR 1.000000 ; Source tokens/s 230 ; Perplexity 99.00
-[04/18/18 05:21:03 INFO] Epoch 3 ; Iteration 750/975 ; Optim SGD LR 1.000000 ; Source tokens/s 246 ; Perplexity 95.03
-[04/18/18 05:27:05 INFO] Epoch 3 ; Iteration 800/975 ; Optim SGD LR 1.000000 ; Source tokens/s 232 ; Perplexity 92.57
-[04/18/18 05:32:55 INFO] Epoch 3 ; Iteration 850/975 ; Optim SGD LR 1.000000 ; Source tokens/s 235 ; Perplexity 90.50
-[04/18/18 05:38:20 INFO] Epoch 3 ; Iteration 900/975 ; Optim SGD LR 1.000000 ; Source tokens/s 265 ; Perplexity 93.89
-[04/18/18 05:43:52 INFO] Epoch 3 ; Iteration 950/975 ; Optim SGD LR 1.000000 ; Source tokens/s 240 ; Perplexity 92.96
-[04/18/18 05:46:42 INFO] Epoch 3 ; Iteration 975/975 ; Optim SGD LR 1.000000 ; Source tokens/s 251 ; Perplexity 90.74
-[04/18/18 05:46:42 INFO] Evaluating on the validation dataset...
-[04/18/18 05:47:18 INFO] Validation perplexity: 145.35
-[04/18/18 05:47:18 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch3_145.35.t7'...
-[04/18/18 05:47:21 INFO] 
-[04/18/18 05:52:31 INFO] Epoch 4 ; Iteration 50/975 ; Optim SGD LR 1.000000 ; Source tokens/s 266 ; Perplexity 86.63
-[04/18/18 05:58:30 INFO] Epoch 4 ; Iteration 100/975 ; Optim SGD LR 1.000000 ; Source tokens/s 227 ; Perplexity 79.61
-[04/18/18 06:04:23 INFO] Epoch 4 ; Iteration 150/975 ; Optim SGD LR 1.000000 ; Source tokens/s 223 ; Perplexity 80.25
-[04/18/18 06:09:49 INFO] Epoch 4 ; Iteration 200/975 ; Optim SGD LR 1.000000 ; Source tokens/s 244 ; Perplexity 82.69
-[04/18/18 06:15:18 INFO] Epoch 4 ; Iteration 250/975 ; Optim SGD LR 1.000000 ; Source tokens/s 255 ; Perplexity 81.32
-[04/18/18 06:20:37 INFO] Epoch 4 ; Iteration 300/975 ; Optim SGD LR 1.000000 ; Source tokens/s 253 ; Perplexity 84.52
-[04/18/18 06:26:14 INFO] Epoch 4 ; Iteration 350/975 ; Optim SGD LR 1.000000 ; Source tokens/s 248 ; Perplexity 80.54
-[04/18/18 06:31:48 INFO] Epoch 4 ; Iteration 400/975 ; Optim SGD LR 1.000000 ; Source tokens/s 246 ; Perplexity 80.80
-[04/18/18 06:38:28 INFO] Epoch 4 ; Iteration 450/975 ; Optim SGD LR 1.000000 ; Source tokens/s 210 ; Perplexity 81.03
-[04/18/18 06:44:34 INFO] Epoch 4 ; Iteration 500/975 ; Optim SGD LR 1.000000 ; Source tokens/s 236 ; Perplexity 79.01
-[04/18/18 06:50:42 INFO] Epoch 4 ; Iteration 550/975 ; Optim SGD LR 1.000000 ; Source tokens/s 226 ; Perplexity 76.54
-[04/18/18 06:58:15 INFO] Epoch 4 ; Iteration 600/975 ; Optim SGD LR 1.000000 ; Source tokens/s 176 ; Perplexity 78.07
-[04/18/18 07:05:04 INFO] Epoch 4 ; Iteration 650/975 ; Optim SGD LR 1.000000 ; Source tokens/s 210 ; Perplexity 78.80
-[04/18/18 07:12:14 INFO] Epoch 4 ; Iteration 700/975 ; Optim SGD LR 1.000000 ; Source tokens/s 194 ; Perplexity 76.96
-[04/18/18 07:18:15 INFO] Epoch 4 ; Iteration 750/975 ; Optim SGD LR 1.000000 ; Source tokens/s 214 ; Perplexity 76.40
-[04/18/18 07:24:26 INFO] Epoch 4 ; Iteration 800/975 ; Optim SGD LR 1.000000 ; Source tokens/s 219 ; Perplexity 74.21
-[04/18/18 07:30:35 INFO] Epoch 4 ; Iteration 850/975 ; Optim SGD LR 1.000000 ; Source tokens/s 224 ; Perplexity 74.14
-[04/18/18 07:36:29 INFO] Epoch 4 ; Iteration 900/975 ; Optim SGD LR 1.000000 ; Source tokens/s 226 ; Perplexity 73.86
-[04/18/18 07:41:51 INFO] Epoch 4 ; Iteration 950/975 ; Optim SGD LR 1.000000 ; Source tokens/s 255 ; Perplexity 76.60
-[04/18/18 07:44:44 INFO] Epoch 4 ; Iteration 975/975 ; Optim SGD LR 1.000000 ; Source tokens/s 218 ; Perplexity 70.43
-[04/18/18 07:44:44 INFO] Evaluating on the validation dataset...
-[04/18/18 07:45:19 INFO] Validation perplexity: 124.43
-[04/18/18 07:45:19 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch4_124.43.t7'...
-[04/18/18 07:45:22 INFO] 
-[04/18/18 07:51:31 INFO] Epoch 5 ; Iteration 50/975 ; Optim SGD LR 1.000000 ; Source tokens/s 227 ; Perplexity 68.00
-[04/18/18 07:58:42 INFO] Epoch 5 ; Iteration 100/975 ; Optim SGD LR 1.000000 ; Source tokens/s 197 ; Perplexity 67.64
-[04/18/18 08:04:56 INFO] Epoch 5 ; Iteration 150/975 ; Optim SGD LR 1.000000 ; Source tokens/s 221 ; Perplexity 67.21
-[04/18/18 08:11:02 INFO] Epoch 5 ; Iteration 200/975 ; Optim SGD LR 1.000000 ; Source tokens/s 226 ; Perplexity 68.68
-[04/18/18 08:17:11 INFO] Epoch 5 ; Iteration 250/975 ; Optim SGD LR 1.000000 ; Source tokens/s 223 ; Perplexity 68.25
-[04/18/18 08:23:17 INFO] Epoch 5 ; Iteration 300/975 ; Optim SGD LR 1.000000 ; Source tokens/s 216 ; Perplexity 65.78
-[04/18/18 08:29:51 INFO] Epoch 5 ; Iteration 350/975 ; Optim SGD LR 1.000000 ; Source tokens/s 213 ; Perplexity 64.29
-[04/18/18 08:35:50 INFO] Epoch 5 ; Iteration 400/975 ; Optim SGD LR 1.000000 ; Source tokens/s 213 ; Perplexity 63.88
-[04/18/18 08:41:46 INFO] Epoch 5 ; Iteration 450/975 ; Optim SGD LR 1.000000 ; Source tokens/s 226 ; Perplexity 65.93
-[04/18/18 08:48:31 INFO] Epoch 5 ; Iteration 500/975 ; Optim SGD LR 1.000000 ; Source tokens/s 211 ; Perplexity 62.23
-[04/18/18 08:54:43 INFO] Epoch 5 ; Iteration 550/975 ; Optim SGD LR 1.000000 ; Source tokens/s 216 ; Perplexity 62.66
-[04/18/18 09:00:41 INFO] Epoch 5 ; Iteration 600/975 ; Optim SGD LR 1.000000 ; Source tokens/s 222 ; Perplexity 63.71
-[04/18/18 09:06:45 INFO] Epoch 5 ; Iteration 650/975 ; Optim SGD LR 1.000000 ; Source tokens/s 224 ; Perplexity 64.92
-[04/18/18 09:12:59 INFO] Epoch 5 ; Iteration 700/975 ; Optim SGD LR 1.000000 ; Source tokens/s 217 ; Perplexity 64.49
-[04/18/18 09:19:04 INFO] Epoch 5 ; Iteration 750/975 ; Optim SGD LR 1.000000 ; Source tokens/s 222 ; Perplexity 64.09
-[04/18/18 09:25:36 INFO] Epoch 5 ; Iteration 800/975 ; Optim SGD LR 1.000000 ; Source tokens/s 198 ; Perplexity 61.56
-[04/18/18 09:31:34 INFO] Epoch 5 ; Iteration 850/975 ; Optim SGD LR 1.000000 ; Source tokens/s 230 ; Perplexity 62.48
-[04/18/18 09:37:43 INFO] Epoch 5 ; Iteration 900/975 ; Optim SGD LR 1.000000 ; Source tokens/s 223 ; Perplexity 60.34
-[04/18/18 09:43:59 INFO] Epoch 5 ; Iteration 950/975 ; Optim SGD LR 1.000000 ; Source tokens/s 230 ; Perplexity 62.15
-[04/18/18 09:47:43 INFO] Epoch 5 ; Iteration 975/975 ; Optim SGD LR 1.000000 ; Source tokens/s 187 ; Perplexity 59.77
-[04/18/18 09:47:43 INFO] Evaluating on the validation dataset...
-[04/18/18 09:48:25 INFO] Validation perplexity: 102.25
-[04/18/18 09:48:25 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch5_102.25.t7'...
-[04/18/18 09:48:28 INFO] 
-[04/18/18 09:55:08 INFO] Epoch 6 ; Iteration 50/975 ; Optim SGD LR 1.000000 ; Source tokens/s 206 ; Perplexity 52.98
-[04/18/18 10:01:44 INFO] Epoch 6 ; Iteration 100/975 ; Optim SGD LR 1.000000 ; Source tokens/s 216 ; Perplexity 55.11
-[04/18/18 10:07:59 INFO] Epoch 6 ; Iteration 150/975 ; Optim SGD LR 1.000000 ; Source tokens/s 212 ; Perplexity 52.67
-[04/18/18 10:14:22 INFO] Epoch 6 ; Iteration 200/975 ; Optim SGD LR 1.000000 ; Source tokens/s 217 ; Perplexity 56.37
-[04/18/18 10:20:17 INFO] Epoch 6 ; Iteration 250/975 ; Optim SGD LR 1.000000 ; Source tokens/s 240 ; Perplexity 57.19
-[04/18/18 10:26:00 INFO] Epoch 6 ; Iteration 300/975 ; Optim SGD LR 1.000000 ; Source tokens/s 233 ; Perplexity 58.09
-[04/18/18 10:32:27 INFO] Epoch 6 ; Iteration 350/975 ; Optim SGD LR 1.000000 ; Source tokens/s 202 ; Perplexity 53.55
-[04/18/18 10:37:47 INFO] Epoch 6 ; Iteration 400/975 ; Optim SGD LR 1.000000 ; Source tokens/s 249 ; Perplexity 58.78
-[04/18/18 10:44:25 INFO] Epoch 6 ; Iteration 450/975 ; Optim SGD LR 1.000000 ; Source tokens/s 205 ; Perplexity 53.13
-[04/18/18 10:50:13 INFO] Epoch 6 ; Iteration 500/975 ; Optim SGD LR 1.000000 ; Source tokens/s 236 ; Perplexity 54.43
-[04/18/18 10:56:08 INFO] Epoch 6 ; Iteration 550/975 ; Optim SGD LR 1.000000 ; Source tokens/s 219 ; Perplexity 55.17
-[04/18/18 11:02:29 INFO] Epoch 6 ; Iteration 600/975 ; Optim SGD LR 1.000000 ; Source tokens/s 214 ; Perplexity 55.41
-[04/18/18 11:08:47 INFO] Epoch 6 ; Iteration 650/975 ; Optim SGD LR 1.000000 ; Source tokens/s 197 ; Perplexity 53.47
-[04/18/18 11:15:39 INFO] Epoch 6 ; Iteration 700/975 ; Optim SGD LR 1.000000 ; Source tokens/s 204 ; Perplexity 50.93
-[04/18/18 11:21:50 INFO] Epoch 6 ; Iteration 750/975 ; Optim SGD LR 1.000000 ; Source tokens/s 226 ; Perplexity 52.13
-[04/18/18 11:27:12 INFO] Epoch 6 ; Iteration 800/975 ; Optim SGD LR 1.000000 ; Source tokens/s 270 ; Perplexity 52.66
-[04/18/18 11:32:22 INFO] Epoch 6 ; Iteration 850/975 ; Optim SGD LR 1.000000 ; Source tokens/s 261 ; Perplexity 51.48
-[04/18/18 11:37:31 INFO] Epoch 6 ; Iteration 900/975 ; Optim SGD LR 1.000000 ; Source tokens/s 282 ; Perplexity 53.84
-[04/18/18 11:43:03 INFO] Epoch 6 ; Iteration 950/975 ; Optim SGD LR 1.000000 ; Source tokens/s 246 ; Perplexity 49.58
-[04/18/18 11:45:42 INFO] Epoch 6 ; Iteration 975/975 ; Optim SGD LR 1.000000 ; Source tokens/s 250 ; Perplexity 50.98
-[04/18/18 11:45:42 INFO] Evaluating on the validation dataset...
-[04/18/18 11:46:18 INFO] Validation perplexity: 89.99
-[04/18/18 11:46:18 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch6_89.99.t7'...
-[04/18/18 11:46:20 INFO] 
-[04/18/18 11:51:39 INFO] Epoch 7 ; Iteration 50/975 ; Optim SGD LR 1.000000 ; Source tokens/s 245 ; Perplexity 45.90
-[04/18/18 11:57:30 INFO] Epoch 7 ; Iteration 100/975 ; Optim SGD LR 1.000000 ; Source tokens/s 244 ; Perplexity 45.03
-[04/18/18 12:03:04 INFO] Epoch 7 ; Iteration 150/975 ; Optim SGD LR 1.000000 ; Source tokens/s 241 ; Perplexity 46.41
-[04/18/18 12:08:58 INFO] Epoch 7 ; Iteration 200/975 ; Optim SGD LR 1.000000 ; Source tokens/s 235 ; Perplexity 43.90
-[04/18/18 12:14:16 INFO] Epoch 7 ; Iteration 250/975 ; Optim SGD LR 1.000000 ; Source tokens/s 261 ; Perplexity 48.09
-[04/18/18 12:19:59 INFO] Epoch 7 ; Iteration 300/975 ; Optim SGD LR 1.000000 ; Source tokens/s 241 ; Perplexity 46.73
-[04/18/18 12:25:42 INFO] Epoch 7 ; Iteration 350/975 ; Optim SGD LR 1.000000 ; Source tokens/s 247 ; Perplexity 45.88
-[04/18/18 12:31:08 INFO] Epoch 7 ; Iteration 400/975 ; Optim SGD LR 1.000000 ; Source tokens/s 258 ; Perplexity 46.52
-[04/18/18 12:36:47 INFO] Epoch 7 ; Iteration 450/975 ; Optim SGD LR 1.000000 ; Source tokens/s 241 ; Perplexity 45.23
-[04/18/18 12:42:28 INFO] Epoch 7 ; Iteration 500/975 ; Optim SGD LR 1.000000 ; Source tokens/s 231 ; Perplexity 45.98
-[04/18/18 12:48:45 INFO] Epoch 7 ; Iteration 550/975 ; Optim SGD LR 1.000000 ; Source tokens/s 215 ; Perplexity 45.68
-[04/18/18 12:54:52 INFO] Epoch 7 ; Iteration 600/975 ; Optim SGD LR 1.000000 ; Source tokens/s 221 ; Perplexity 44.53
-[04/18/18 13:01:26 INFO] Epoch 7 ; Iteration 650/975 ; Optim SGD LR 1.000000 ; Source tokens/s 193 ; Perplexity 42.96
-[04/18/18 13:07:31 INFO] Epoch 7 ; Iteration 700/975 ; Optim SGD LR 1.000000 ; Source tokens/s 228 ; Perplexity 41.85
-[04/18/18 13:13:45 INFO] Epoch 7 ; Iteration 750/975 ; Optim SGD LR 1.000000 ; Source tokens/s 216 ; Perplexity 43.33
-[04/18/18 13:20:47 INFO] Epoch 7 ; Iteration 800/975 ; Optim SGD LR 1.000000 ; Source tokens/s 206 ; Perplexity 45.68
-[04/18/18 13:27:00 INFO] Epoch 7 ; Iteration 850/975 ; Optim SGD LR 1.000000 ; Source tokens/s 209 ; Perplexity 44.81
-[04/18/18 13:33:03 INFO] Epoch 7 ; Iteration 900/975 ; Optim SGD LR 1.000000 ; Source tokens/s 238 ; Perplexity 45.42
-[04/18/18 13:39:19 INFO] Epoch 7 ; Iteration 950/975 ; Optim SGD LR 1.000000 ; Source tokens/s 220 ; Perplexity 44.13
-[04/18/18 13:42:26 INFO] Epoch 7 ; Iteration 975/975 ; Optim SGD LR 1.000000 ; Source tokens/s 198 ; Perplexity 41.81
-[04/18/18 13:42:26 INFO] Evaluating on the validation dataset...
-[04/18/18 13:43:11 INFO] Validation perplexity: 77.89
-[04/18/18 13:43:11 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch7_77.89.t7'...
-[04/18/18 13:43:15 INFO] 
-[04/18/18 13:50:00 INFO] Epoch 8 ; Iteration 50/975 ; Optim SGD LR 1.000000 ; Source tokens/s 211 ; Perplexity 38.84
-[04/18/18 13:57:10 INFO] Epoch 8 ; Iteration 100/975 ; Optim SGD LR 1.000000 ; Source tokens/s 199 ; Perplexity 39.65
-[04/18/18 14:04:22 INFO] Epoch 8 ; Iteration 150/975 ; Optim SGD LR 1.000000 ; Source tokens/s 195 ; Perplexity 38.44
-[04/18/18 14:11:12 INFO] Epoch 8 ; Iteration 200/975 ; Optim SGD LR 1.000000 ; Source tokens/s 195 ; Perplexity 36.10
-[04/18/18 14:18:23 INFO] Epoch 8 ; Iteration 250/975 ; Optim SGD LR 1.000000 ; Source tokens/s 186 ; Perplexity 36.99
-[04/18/18 14:25:08 INFO] Epoch 8 ; Iteration 300/975 ; Optim SGD LR 1.000000 ; Source tokens/s 202 ; Perplexity 37.57
-[04/18/18 14:31:52 INFO] Epoch 8 ; Iteration 350/975 ; Optim SGD LR 1.000000 ; Source tokens/s 215 ; Perplexity 39.26
-[04/18/18 14:38:21 INFO] Epoch 8 ; Iteration 400/975 ; Optim SGD LR 1.000000 ; Source tokens/s 203 ; Perplexity 37.62
-[04/18/18 14:45:27 INFO] Epoch 8 ; Iteration 450/975 ; Optim SGD LR 1.000000 ; Source tokens/s 183 ; Perplexity 35.94
-[04/18/18 14:53:36 INFO] Epoch 8 ; Iteration 500/975 ; Optim SGD LR 1.000000 ; Source tokens/s 175 ; Perplexity 38.24
-[04/18/18 15:00:53 INFO] Epoch 8 ; Iteration 550/975 ; Optim SGD LR 1.000000 ; Source tokens/s 189 ; Perplexity 38.49
-[04/18/18 15:07:14 INFO] Epoch 8 ; Iteration 600/975 ; Optim SGD LR 1.000000 ; Source tokens/s 213 ; Perplexity 38.15
-[04/18/18 15:14:11 INFO] Epoch 8 ; Iteration 650/975 ; Optim SGD LR 1.000000 ; Source tokens/s 191 ; Perplexity 37.02
-[04/18/18 15:21:25 INFO] Epoch 8 ; Iteration 700/975 ; Optim SGD LR 1.000000 ; Source tokens/s 182 ; Perplexity 35.71
-[04/18/18 15:28:43 INFO] Epoch 8 ; Iteration 750/975 ; Optim SGD LR 1.000000 ; Source tokens/s 188 ; Perplexity 35.74
-[04/18/18 15:35:14 INFO] Epoch 8 ; Iteration 800/975 ; Optim SGD LR 1.000000 ; Source tokens/s 215 ; Perplexity 36.61
-[04/18/18 15:41:31 INFO] Epoch 8 ; Iteration 850/975 ; Optim SGD LR 1.000000 ; Source tokens/s 214 ; Perplexity 35.00
-[04/18/18 15:47:39 INFO] Epoch 8 ; Iteration 900/975 ; Optim SGD LR 1.000000 ; Source tokens/s 207 ; Perplexity 34.38
-[04/18/18 15:53:41 INFO] Epoch 8 ; Iteration 950/975 ; Optim SGD LR 1.000000 ; Source tokens/s 229 ; Perplexity 35.38
-[04/18/18 15:56:32 INFO] Epoch 8 ; Iteration 975/975 ; Optim SGD LR 1.000000 ; Source tokens/s 241 ; Perplexity 36.09
-[04/18/18 15:56:32 INFO] Evaluating on the validation dataset...
-[04/18/18 15:57:07 INFO] Validation perplexity: 65.84
-[04/18/18 15:57:07 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch8_65.84.t7'...
-[04/18/18 15:57:11 INFO] 
-[04/18/18 16:02:56 INFO] Epoch 9 ; Iteration 50/975 ; Optim SGD LR 1.000000 ; Source tokens/s 238 ; Perplexity 30.74
-[04/18/18 16:09:02 INFO] Epoch 9 ; Iteration 100/975 ; Optim SGD LR 1.000000 ; Source tokens/s 237 ; Perplexity 31.03
-[04/18/18 16:14:38 INFO] Epoch 9 ; Iteration 150/975 ; Optim SGD LR 1.000000 ; Source tokens/s 242 ; Perplexity 30.96
-[04/18/18 16:20:57 INFO] Epoch 9 ; Iteration 200/975 ; Optim SGD LR 1.000000 ; Source tokens/s 217 ; Perplexity 31.03
-[04/18/18 16:27:02 INFO] Epoch 9 ; Iteration 250/975 ; Optim SGD LR 1.000000 ; Source tokens/s 227 ; Perplexity 30.16
-[04/18/18 16:33:06 INFO] Epoch 9 ; Iteration 300/975 ; Optim SGD LR 1.000000 ; Source tokens/s 219 ; Perplexity 31.50
-[04/18/18 16:38:26 INFO] Epoch 9 ; Iteration 350/975 ; Optim SGD LR 1.000000 ; Source tokens/s 231 ; Perplexity 30.30
-[04/18/18 16:44:17 INFO] Epoch 9 ; Iteration 400/975 ; Optim SGD LR 1.000000 ; Source tokens/s 229 ; Perplexity 30.65
-[04/18/18 16:50:29 INFO] Epoch 9 ; Iteration 450/975 ; Optim SGD LR 1.000000 ; Source tokens/s 223 ; Perplexity 30.47
-[04/18/18 16:56:24 INFO] Epoch 9 ; Iteration 500/975 ; Optim SGD LR 1.000000 ; Source tokens/s 236 ; Perplexity 30.68
-[04/18/18 17:01:58 INFO] Epoch 9 ; Iteration 550/975 ; Optim SGD LR 1.000000 ; Source tokens/s 256 ; Perplexity 32.10
-[04/18/18 17:08:13 INFO] Epoch 9 ; Iteration 600/975 ; Optim SGD LR 1.000000 ; Source tokens/s 220 ; Perplexity 29.96
-[04/18/18 17:13:48 INFO] Epoch 9 ; Iteration 650/975 ; Optim SGD LR 1.000000 ; Source tokens/s 245 ; Perplexity 30.81
-[04/18/18 17:19:11 INFO] Epoch 9 ; Iteration 700/975 ; Optim SGD LR 1.000000 ; Source tokens/s 237 ; Perplexity 30.74
-[04/18/18 17:24:55 INFO] Epoch 9 ; Iteration 750/975 ; Optim SGD LR 1.000000 ; Source tokens/s 249 ; Perplexity 31.14
-[04/18/18 17:30:50 INFO] Epoch 9 ; Iteration 800/975 ; Optim SGD LR 1.000000 ; Source tokens/s 238 ; Perplexity 29.62
-[04/18/18 17:36:47 INFO] Epoch 9 ; Iteration 850/975 ; Optim SGD LR 1.000000 ; Source tokens/s 217 ; Perplexity 27.66
-[04/18/18 17:42:59 INFO] Epoch 9 ; Iteration 900/975 ; Optim SGD LR 1.000000 ; Source tokens/s 209 ; Perplexity 28.61
-[04/18/18 17:49:00 INFO] Epoch 9 ; Iteration 950/975 ; Optim SGD LR 1.000000 ; Source tokens/s 232 ; Perplexity 29.03
-[04/18/18 17:51:44 INFO] Epoch 9 ; Iteration 975/975 ; Optim SGD LR 1.000000 ; Source tokens/s 266 ; Perplexity 33.03
-[04/18/18 17:51:44 INFO] Evaluating on the validation dataset...
-[04/18/18 17:52:23 INFO] Validation perplexity: 55.78
-[04/18/18 17:52:23 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch9_55.78.t7'...
-[04/18/18 17:52:24 INFO] 
-[04/18/18 17:58:26 INFO] Epoch 10 ; Iteration 50/975 ; Optim SGD LR 0.700000 ; Source tokens/s 220 ; Perplexity 22.78
-[04/18/18 18:04:09 INFO] Epoch 10 ; Iteration 100/975 ; Optim SGD LR 0.700000 ; Source tokens/s 235 ; Perplexity 24.71
-[04/18/18 18:09:59 INFO] Epoch 10 ; Iteration 150/975 ; Optim SGD LR 0.700000 ; Source tokens/s 234 ; Perplexity 24.66
-[04/18/18 18:16:10 INFO] Epoch 10 ; Iteration 200/975 ; Optim SGD LR 0.700000 ; Source tokens/s 222 ; Perplexity 23.68
-[04/18/18 18:22:11 INFO] Epoch 10 ; Iteration 250/975 ; Optim SGD LR 0.700000 ; Source tokens/s 233 ; Perplexity 24.40
-[04/18/18 18:28:03 INFO] Epoch 10 ; Iteration 300/975 ; Optim SGD LR 0.700000 ; Source tokens/s 235 ; Perplexity 23.77
-[04/18/18 18:34:32 INFO] Epoch 10 ; Iteration 350/975 ; Optim SGD LR 0.700000 ; Source tokens/s 204 ; Perplexity 23.64
-[04/18/18 18:40:37 INFO] Epoch 10 ; Iteration 400/975 ; Optim SGD LR 0.700000 ; Source tokens/s 226 ; Perplexity 23.41
-[04/18/18 18:47:05 INFO] Epoch 10 ; Iteration 450/975 ; Optim SGD LR 0.700000 ; Source tokens/s 214 ; Perplexity 23.61
-[04/18/18 18:53:17 INFO] Epoch 10 ; Iteration 500/975 ; Optim SGD LR 0.700000 ; Source tokens/s 220 ; Perplexity 23.35
-[04/18/18 18:59:30 INFO] Epoch 10 ; Iteration 550/975 ; Optim SGD LR 0.700000 ; Source tokens/s 216 ; Perplexity 23.05
-[04/18/18 19:06:17 INFO] Epoch 10 ; Iteration 600/975 ; Optim SGD LR 0.700000 ; Source tokens/s 196 ; Perplexity 22.51
-[04/18/18 19:12:27 INFO] Epoch 10 ; Iteration 650/975 ; Optim SGD LR 0.700000 ; Source tokens/s 224 ; Perplexity 24.36
-[04/18/18 19:18:25 INFO] Epoch 10 ; Iteration 700/975 ; Optim SGD LR 0.700000 ; Source tokens/s 230 ; Perplexity 24.63
-[04/18/18 19:24:33 INFO] Epoch 10 ; Iteration 750/975 ; Optim SGD LR 0.700000 ; Source tokens/s 211 ; Perplexity 23.00
-[04/18/18 19:30:55 INFO] Epoch 10 ; Iteration 800/975 ; Optim SGD LR 0.700000 ; Source tokens/s 215 ; Perplexity 22.56
-[04/18/18 19:37:07 INFO] Epoch 10 ; Iteration 850/975 ; Optim SGD LR 0.700000 ; Source tokens/s 234 ; Perplexity 24.03
-[04/18/18 19:43:34 INFO] Epoch 10 ; Iteration 900/975 ; Optim SGD LR 0.700000 ; Source tokens/s 210 ; Perplexity 22.07
-[04/18/18 19:49:33 INFO] Epoch 10 ; Iteration 950/975 ; Optim SGD LR 0.700000 ; Source tokens/s 235 ; Perplexity 23.95
-[04/18/18 19:52:33 INFO] Epoch 10 ; Iteration 975/975 ; Optim SGD LR 0.700000 ; Source tokens/s 219 ; Perplexity 23.26
-[04/18/18 19:52:33 INFO] Evaluating on the validation dataset...
-[04/18/18 19:53:12 INFO] Validation perplexity: 48.04
-[04/18/18 19:53:12 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch10_48.04.t7'...
-[04/18/18 19:53:15 INFO] 
-[04/18/18 19:59:19 INFO] Epoch 11 ; Iteration 50/975 ; Optim SGD LR 0.490000 ; Source tokens/s 230 ; Perplexity 19.76
-[04/18/18 20:04:55 INFO] Epoch 11 ; Iteration 100/975 ; Optim SGD LR 0.490000 ; Source tokens/s 242 ; Perplexity 20.18
-[04/18/18 20:10:49 INFO] Epoch 11 ; Iteration 150/975 ; Optim SGD LR 0.490000 ; Source tokens/s 234 ; Perplexity 19.73
-[04/18/18 20:16:46 INFO] Epoch 11 ; Iteration 200/975 ; Optim SGD LR 0.490000 ; Source tokens/s 233 ; Perplexity 19.43
-[04/18/18 20:22:52 INFO] Epoch 11 ; Iteration 250/975 ; Optim SGD LR 0.490000 ; Source tokens/s 227 ; Perplexity 19.20
-[04/18/18 20:28:56 INFO] Epoch 11 ; Iteration 300/975 ; Optim SGD LR 0.490000 ; Source tokens/s 222 ; Perplexity 19.12
-[04/18/18 20:34:57 INFO] Epoch 11 ; Iteration 350/975 ; Optim SGD LR 0.490000 ; Source tokens/s 229 ; Perplexity 20.30
-[04/18/18 20:40:50 INFO] Epoch 11 ; Iteration 400/975 ; Optim SGD LR 0.490000 ; Source tokens/s 229 ; Perplexity 19.86
-[04/18/18 20:46:29 INFO] Epoch 11 ; Iteration 450/975 ; Optim SGD LR 0.490000 ; Source tokens/s 250 ; Perplexity 20.26
-[04/18/18 20:52:42 INFO] Epoch 11 ; Iteration 500/975 ; Optim SGD LR 0.490000 ; Source tokens/s 211 ; Perplexity 18.70
-[04/18/18 20:58:25 INFO] Epoch 11 ; Iteration 550/975 ; Optim SGD LR 0.490000 ; Source tokens/s 229 ; Perplexity 19.44
-[04/18/18 21:04:08 INFO] Epoch 11 ; Iteration 600/975 ; Optim SGD LR 0.490000 ; Source tokens/s 236 ; Perplexity 19.52
-[04/18/18 21:09:52 INFO] Epoch 11 ; Iteration 650/975 ; Optim SGD LR 0.490000 ; Source tokens/s 248 ; Perplexity 19.74
-[04/18/18 21:15:43 INFO] Epoch 11 ; Iteration 700/975 ; Optim SGD LR 0.490000 ; Source tokens/s 231 ; Perplexity 19.52
-[04/18/18 21:21:05 INFO] Epoch 11 ; Iteration 750/975 ; Optim SGD LR 0.490000 ; Source tokens/s 250 ; Perplexity 19.84
-[04/18/18 21:27:15 INFO] Epoch 11 ; Iteration 800/975 ; Optim SGD LR 0.490000 ; Source tokens/s 226 ; Perplexity 18.94
-[04/18/18 21:33:33 INFO] Epoch 11 ; Iteration 850/975 ; Optim SGD LR 0.490000 ; Source tokens/s 218 ; Perplexity 18.83
-[04/18/18 21:39:30 INFO] Epoch 11 ; Iteration 900/975 ; Optim SGD LR 0.490000 ; Source tokens/s 233 ; Perplexity 19.25
-[04/18/18 21:45:19 INFO] Epoch 11 ; Iteration 950/975 ; Optim SGD LR 0.490000 ; Source tokens/s 220 ; Perplexity 17.71
-[04/18/18 21:49:17 INFO] Epoch 11 ; Iteration 975/975 ; Optim SGD LR 0.490000 ; Source tokens/s 175 ; Perplexity 18.43
-[04/18/18 21:49:17 INFO] Evaluating on the validation dataset...
-[04/18/18 21:50:01 INFO] Validation perplexity: 43.75
-[04/18/18 21:50:01 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch11_43.75.t7'...
-[04/18/18 21:50:04 INFO] 
-[04/18/18 21:57:08 INFO] Epoch 12 ; Iteration 50/975 ; Optim SGD LR 0.343000 ; Source tokens/s 191 ; Perplexity 17.42
-[04/18/18 22:03:05 INFO] Epoch 12 ; Iteration 100/975 ; Optim SGD LR 0.343000 ; Source tokens/s 224 ; Perplexity 16.45
-[04/18/18 22:09:06 INFO] Epoch 12 ; Iteration 150/975 ; Optim SGD LR 0.343000 ; Source tokens/s 235 ; Perplexity 17.43
-[04/18/18 22:15:28 INFO] Epoch 12 ; Iteration 200/975 ; Optim SGD LR 0.343000 ; Source tokens/s 216 ; Perplexity 16.08
-[04/18/18 22:21:27 INFO] Epoch 12 ; Iteration 250/975 ; Optim SGD LR 0.343000 ; Source tokens/s 226 ; Perplexity 16.46
-[04/18/18 22:27:39 INFO] Epoch 12 ; Iteration 300/975 ; Optim SGD LR 0.343000 ; Source tokens/s 226 ; Perplexity 16.80
-[04/18/18 22:34:25 INFO] Epoch 12 ; Iteration 350/975 ; Optim SGD LR 0.343000 ; Source tokens/s 200 ; Perplexity 17.08
-[04/18/18 22:39:59 INFO] Epoch 12 ; Iteration 400/975 ; Optim SGD LR 0.343000 ; Source tokens/s 246 ; Perplexity 16.62
-[04/18/18 22:45:31 INFO] Epoch 12 ; Iteration 450/975 ; Optim SGD LR 0.343000 ; Source tokens/s 242 ; Perplexity 16.57
-[04/18/18 22:51:01 INFO] Epoch 12 ; Iteration 500/975 ; Optim SGD LR 0.343000 ; Source tokens/s 240 ; Perplexity 16.65
-[04/18/18 22:56:31 INFO] Epoch 12 ; Iteration 550/975 ; Optim SGD LR 0.343000 ; Source tokens/s 230 ; Perplexity 15.96
-[04/18/18 23:01:36 INFO] Epoch 12 ; Iteration 600/975 ; Optim SGD LR 0.343000 ; Source tokens/s 279 ; Perplexity 17.54
-[04/18/18 23:06:51 INFO] Epoch 12 ; Iteration 650/975 ; Optim SGD LR 0.343000 ; Source tokens/s 262 ; Perplexity 17.03
-[04/18/18 23:11:52 INFO] Epoch 12 ; Iteration 700/975 ; Optim SGD LR 0.343000 ; Source tokens/s 267 ; Perplexity 17.13
-[04/18/18 23:17:21 INFO] Epoch 12 ; Iteration 750/975 ; Optim SGD LR 0.343000 ; Source tokens/s 250 ; Perplexity 16.78
-[04/18/18 23:22:57 INFO] Epoch 12 ; Iteration 800/975 ; Optim SGD LR 0.343000 ; Source tokens/s 241 ; Perplexity 16.64
-[04/18/18 23:28:23 INFO] Epoch 12 ; Iteration 850/975 ; Optim SGD LR 0.343000 ; Source tokens/s 253 ; Perplexity 16.80
-[04/18/18 23:33:45 INFO] Epoch 12 ; Iteration 900/975 ; Optim SGD LR 0.343000 ; Source tokens/s 256 ; Perplexity 17.07
-[04/18/18 23:39:00 INFO] Epoch 12 ; Iteration 950/975 ; Optim SGD LR 0.343000 ; Source tokens/s 269 ; Perplexity 16.95
-[04/18/18 23:41:50 INFO] Epoch 12 ; Iteration 975/975 ; Optim SGD LR 0.343000 ; Source tokens/s 252 ; Perplexity 16.99
-[04/18/18 23:41:50 INFO] Evaluating on the validation dataset...
-[04/18/18 23:42:25 INFO] Validation perplexity: 41.81
-[04/18/18 23:42:25 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch12_41.81.t7'...
-[04/18/18 23:42:28 INFO] 
-[04/18/18 23:47:47 INFO] Epoch 13 ; Iteration 50/975 ; Optim SGD LR 0.240100 ; Source tokens/s 256 ; Perplexity 14.93
-[04/18/18 23:53:16 INFO] Epoch 13 ; Iteration 100/975 ; Optim SGD LR 0.240100 ; Source tokens/s 241 ; Perplexity 14.55
-[04/18/18 23:58:55 INFO] Epoch 13 ; Iteration 150/975 ; Optim SGD LR 0.240100 ; Source tokens/s 261 ; Perplexity 15.38
-[04/19/18 00:04:19 INFO] Epoch 13 ; Iteration 200/975 ; Optim SGD LR 0.240100 ; Source tokens/s 249 ; Perplexity 15.21
-[04/19/18 00:09:58 INFO] Epoch 13 ; Iteration 250/975 ; Optim SGD LR 0.240100 ; Source tokens/s 245 ; Perplexity 15.24
-[04/19/18 00:15:47 INFO] Epoch 13 ; Iteration 300/975 ; Optim SGD LR 0.240100 ; Source tokens/s 219 ; Perplexity 14.19
-[04/19/18 00:21:21 INFO] Epoch 13 ; Iteration 350/975 ; Optim SGD LR 0.240100 ; Source tokens/s 249 ; Perplexity 15.49
-[04/19/18 00:27:10 INFO] Epoch 13 ; Iteration 400/975 ; Optim SGD LR 0.240100 ; Source tokens/s 215 ; Perplexity 14.72
-[04/19/18 00:32:45 INFO] Epoch 13 ; Iteration 450/975 ; Optim SGD LR 0.240100 ; Source tokens/s 246 ; Perplexity 15.73
-[04/19/18 00:38:11 INFO] Epoch 13 ; Iteration 500/975 ; Optim SGD LR 0.240100 ; Source tokens/s 258 ; Perplexity 15.54
-[04/19/18 00:43:34 INFO] Epoch 13 ; Iteration 550/975 ; Optim SGD LR 0.240100 ; Source tokens/s 260 ; Perplexity 15.82
-[04/19/18 00:49:11 INFO] Epoch 13 ; Iteration 600/975 ; Optim SGD LR 0.240100 ; Source tokens/s 249 ; Perplexity 15.05
-[04/19/18 00:54:48 INFO] Epoch 13 ; Iteration 650/975 ; Optim SGD LR 0.240100 ; Source tokens/s 242 ; Perplexity 15.18
-[04/19/18 01:00:18 INFO] Epoch 13 ; Iteration 700/975 ; Optim SGD LR 0.240100 ; Source tokens/s 248 ; Perplexity 14.83
-[04/19/18 01:05:58 INFO] Epoch 13 ; Iteration 750/975 ; Optim SGD LR 0.240100 ; Source tokens/s 247 ; Perplexity 15.04
-[04/19/18 01:11:43 INFO] Epoch 13 ; Iteration 800/975 ; Optim SGD LR 0.240100 ; Source tokens/s 244 ; Perplexity 14.88
-[04/19/18 01:17:10 INFO] Epoch 13 ; Iteration 850/975 ; Optim SGD LR 0.240100 ; Source tokens/s 237 ; Perplexity 15.56
-[04/19/18 01:22:17 INFO] Epoch 13 ; Iteration 900/975 ; Optim SGD LR 0.240100 ; Source tokens/s 256 ; Perplexity 16.15
-[04/19/18 01:28:13 INFO] Epoch 13 ; Iteration 950/975 ; Optim SGD LR 0.240100 ; Source tokens/s 235 ; Perplexity 14.52
-[04/19/18 01:31:01 INFO] Epoch 13 ; Iteration 975/975 ; Optim SGD LR 0.240100 ; Source tokens/s 254 ; Perplexity 15.47
-[04/19/18 01:31:01 INFO] Evaluating on the validation dataset...
-[04/19/18 01:31:37 INFO] Validation perplexity: 40.45
-[04/19/18 01:31:37 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch13_40.45.t7'...
+[04/20/18 21:38:49 INFO] Training Sequence to Sequence with Attention model...
+[04/20/18 21:38:49 INFO] Loading data from '/data/kyoto-train.100k-train.t7'...
+[04/20/18 21:38:51 INFO]  * vocabulary size: source = 8257; target = 8777
+[04/20/18 21:38:51 INFO]  * additional features: source = 0; target = 0
+[04/20/18 21:38:51 INFO]  * maximum sequence length: source = 50; target = 51
+[04/20/18 21:38:51 INFO]  * number of training sentences: 45348
+[04/20/18 21:38:51 INFO]  * number of batches: 532
+[04/20/18 21:38:51 INFO]    - source sequence lengths: equal
+[04/20/18 21:38:51 INFO]    - maximum size: 160 sentences / 1800 tokens
+[04/20/18 21:38:51 INFO]    - average size: 85.24
+[04/20/18 21:38:51 INFO]    - capacity: 100.00%
+[04/20/18 21:38:51 INFO] Building model...
+[04/20/18 21:38:51 INFO]  * Encoder:
+[04/20/18 21:38:52 INFO]    - word embeddings size: 500
+[04/20/18 21:38:52 INFO]    - type: unidirectional RNN
+[04/20/18 21:38:52 INFO]    - structure: cell = LSTM; layers = 2; rnn_size = 500; dropout = 0.3 (naive)
+[04/20/18 21:38:52 INFO]  * Decoder:
+[04/20/18 21:38:52 INFO]    - word embeddings size: 500
+[04/20/18 21:38:52 INFO]    - attention: global (general)
+[04/20/18 21:38:52 INFO]    - structure: cell = LSTM; layers = 2; rnn_size = 500; dropout = 0.3 (naive)
+[04/20/18 21:38:52 INFO]  * Bridge: copy
+[04/20/18 21:38:52 INFO] Initializing parameters...
+[04/20/18 21:38:53 INFO]  * number of parameters: 22680277
+[04/20/18 21:38:53 INFO] Preparing memory optimization...
+[04/20/18 21:38:53 INFO]  * sharing 69% of output/gradInput tensors memory between clones
+[04/20/18 21:38:53 INFO] Preallocating memory
+[04/21/18 07:05:13 INFO] Training Sequence to Sequence with Attention model...
+[04/21/18 07:05:13 INFO] Loading data from '/data/kyoto-train.100k-train.t7'...
+[04/21/18 07:05:15 INFO]  * vocabulary size: source = 8257; target = 8777
+[04/21/18 07:05:15 INFO]  * additional features: source = 0; target = 0
+[04/21/18 07:05:15 INFO]  * maximum sequence length: source = 50; target = 51
+[04/21/18 07:05:15 INFO]  * number of training sentences: 45348
+[04/21/18 07:05:15 INFO]  * number of batches: 532
+[04/21/18 07:05:15 INFO]    - source sequence lengths: equal
+[04/21/18 07:05:15 INFO]    - maximum size: 160 sentences / 1800 tokens
+[04/21/18 07:05:15 INFO]    - average size: 85.24
+[04/21/18 07:05:15 INFO]    - capacity: 100.00%
+[04/21/18 07:05:15 INFO] Building model...
+[04/21/18 07:05:15 INFO]  * Encoder:
+[04/21/18 07:05:15 INFO]    - word embeddings size: 500
+[04/21/18 07:05:15 INFO]    - type: unidirectional RNN
+[04/21/18 07:05:15 INFO]    - structure: cell = LSTM; layers = 2; rnn_size = 500; dropout = 0.3 (naive)
+[04/21/18 07:05:15 INFO]  * Decoder:
+[04/21/18 07:05:16 INFO]    - word embeddings size: 500
+[04/21/18 07:05:16 INFO]    - attention: global (general)
+[04/21/18 07:05:16 INFO]    - structure: cell = LSTM; layers = 2; rnn_size = 500; dropout = 0.3 (naive)
+[04/21/18 07:05:16 INFO]  * Bridge: copy
+[04/21/18 07:05:16 INFO] Initializing parameters...
+[04/21/18 07:05:17 INFO]  * number of parameters: 22680277
+[04/21/18 07:05:17 INFO] Preparing memory optimization...
+[04/21/18 07:05:17 INFO]  * sharing 69% of output/gradInput tensors memory between clones
+[04/21/18 07:05:17 INFO] Preallocating memory
+[04/21/18 07:05:33 INFO] Start training from epoch 1 to 13...
+[04/21/18 07:05:33 INFO] 
+[04/21/18 07:13:32 INFO] Epoch 1 ; Iteration 50/532 ; Optim SGD LR 1.000000 ; Source tokens/s 168 ; Perplexity 34316.58
+[04/21/18 07:20:40 INFO] Epoch 1 ; Iteration 100/532 ; Optim SGD LR 1.000000 ; Source tokens/s 189 ; Perplexity 2336.38
+[04/21/18 07:27:37 INFO] Epoch 1 ; Iteration 150/532 ; Optim SGD LR 1.000000 ; Source tokens/s 189 ; Perplexity 168.62
+[04/21/18 07:34:45 INFO] Epoch 1 ; Iteration 200/532 ; Optim SGD LR 1.000000 ; Source tokens/s 174 ; Perplexity 49.17
+[04/21/18 07:41:58 INFO] Epoch 1 ; Iteration 250/532 ; Optim SGD LR 1.000000 ; Source tokens/s 181 ; Perplexity 32.62
+[04/21/18 07:49:59 INFO] Epoch 1 ; Iteration 300/532 ; Optim SGD LR 1.000000 ; Source tokens/s 154 ; Perplexity 25.45
+[04/21/18 07:58:09 INFO] Epoch 1 ; Iteration 350/532 ; Optim SGD LR 1.000000 ; Source tokens/s 155 ; Perplexity 20.79
+[04/21/18 08:06:24 INFO] Epoch 1 ; Iteration 400/532 ; Optim SGD LR 1.000000 ; Source tokens/s 151 ; Perplexity 20.69
+[04/21/18 08:17:22 INFO] Epoch 1 ; Iteration 450/532 ; Optim SGD LR 1.000000 ; Source tokens/s 127 ; Perplexity 17.50
+[04/21/18 08:26:06 INFO] Epoch 1 ; Iteration 500/532 ; Optim SGD LR 1.000000 ; Source tokens/s 156 ; Perplexity 16.82
+[04/21/18 08:31:53 INFO] Epoch 1 ; Iteration 532/532 ; Optim SGD LR 1.000000 ; Source tokens/s 143 ; Perplexity 16.05
+[04/21/18 08:31:53 INFO] Evaluating on the validation dataset...
+[04/21/18 08:32:37 INFO] Validation perplexity: 39.74
+[04/21/18 08:32:37 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch1_39.74.t7'...
+[04/21/18 08:32:40 INFO] 
+[04/21/18 08:41:00 INFO] Epoch 2 ; Iteration 50/532 ; Optim SGD LR 1.000000 ; Source tokens/s 159 ; Perplexity 15.31
+[04/21/18 08:51:22 INFO] Epoch 2 ; Iteration 100/532 ; Optim SGD LR 1.000000 ; Source tokens/s 130 ; Perplexity 14.59
+[04/21/18 09:02:59 INFO] Epoch 2 ; Iteration 150/532 ; Optim SGD LR 1.000000 ; Source tokens/s 109 ; Perplexity 13.96
+[04/21/18 09:11:27 INFO] Epoch 2 ; Iteration 200/532 ; Optim SGD LR 1.000000 ; Source tokens/s 160 ; Perplexity 14.02
+[04/21/18 09:18:45 INFO] Epoch 2 ; Iteration 250/532 ; Optim SGD LR 1.000000 ; Source tokens/s 181 ; Perplexity 13.38
+[04/21/18 09:25:45 INFO] Epoch 2 ; Iteration 300/532 ; Optim SGD LR 1.000000 ; Source tokens/s 177 ; Perplexity 12.74
+[04/21/18 09:33:36 INFO] Epoch 2 ; Iteration 350/532 ; Optim SGD LR 1.000000 ; Source tokens/s 163 ; Perplexity 12.64
+[04/21/18 09:41:46 INFO] Epoch 2 ; Iteration 400/532 ; Optim SGD LR 1.000000 ; Source tokens/s 153 ; Perplexity 12.39
+[04/21/18 09:49:44 INFO] Epoch 2 ; Iteration 450/532 ; Optim SGD LR 1.000000 ; Source tokens/s 163 ; Perplexity 11.49
+[04/21/18 09:58:26 INFO] Epoch 2 ; Iteration 500/532 ; Optim SGD LR 1.000000 ; Source tokens/s 150 ; Perplexity 11.58
+[04/21/18 10:03:49 INFO] Epoch 2 ; Iteration 532/532 ; Optim SGD LR 1.000000 ; Source tokens/s 166 ; Perplexity 11.42
+[04/21/18 10:03:49 INFO] Evaluating on the validation dataset...
+[04/21/18 10:04:38 INFO] Validation perplexity: 22.62
+[04/21/18 10:04:38 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch2_22.62.t7'...
+[04/21/18 10:04:42 INFO] 
+[04/21/18 10:12:24 INFO] Epoch 3 ; Iteration 50/532 ; Optim SGD LR 1.000000 ; Source tokens/s 174 ; Perplexity 11.14
+[04/21/18 10:19:21 INFO] Epoch 3 ; Iteration 100/532 ; Optim SGD LR 1.000000 ; Source tokens/s 192 ; Perplexity 11.01
+[04/21/18 10:26:10 INFO] Epoch 3 ; Iteration 150/532 ; Optim SGD LR 1.000000 ; Source tokens/s 188 ; Perplexity 11.09
+[04/21/18 10:33:55 INFO] Epoch 3 ; Iteration 200/532 ; Optim SGD LR 1.000000 ; Source tokens/s 165 ; Perplexity 10.59
+[04/21/18 10:41:25 INFO] Epoch 3 ; Iteration 250/532 ; Optim SGD LR 1.000000 ; Source tokens/s 183 ; Perplexity 10.36
+[04/21/18 10:48:38 INFO] Epoch 3 ; Iteration 300/532 ; Optim SGD LR 1.000000 ; Source tokens/s 180 ; Perplexity 10.21
+[04/21/18 10:55:13 INFO] Epoch 3 ; Iteration 350/532 ; Optim SGD LR 1.000000 ; Source tokens/s 183 ; Perplexity 10.10
+[04/21/18 11:01:44 INFO] Epoch 3 ; Iteration 400/532 ; Optim SGD LR 1.000000 ; Source tokens/s 186 ; Perplexity 10.31
+[04/21/18 11:07:47 INFO] Epoch 3 ; Iteration 450/532 ; Optim SGD LR 1.000000 ; Source tokens/s 228 ; Perplexity 10.37
+[04/21/18 11:14:20 INFO] Epoch 3 ; Iteration 500/532 ; Optim SGD LR 1.000000 ; Source tokens/s 193 ; Perplexity 10.48
+[04/21/18 11:18:52 INFO] Epoch 3 ; Iteration 532/532 ; Optim SGD LR 1.000000 ; Source tokens/s 204 ; Perplexity 10.30
+[04/21/18 11:18:52 INFO] Evaluating on the validation dataset...
+[04/21/18 11:19:28 INFO] Validation perplexity: 52.87
+[04/21/18 11:19:28 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch3_52.87.t7'...
+[04/21/18 11:19:31 INFO] 
+[04/21/18 11:27:09 INFO] Epoch 4 ; Iteration 50/532 ; Optim SGD LR 0.700000 ; Source tokens/s 180 ; Perplexity 8.13
+[04/21/18 11:33:51 INFO] Epoch 4 ; Iteration 100/532 ; Optim SGD LR 0.700000 ; Source tokens/s 187 ; Perplexity 7.96
+[04/21/18 11:41:06 INFO] Epoch 4 ; Iteration 150/532 ; Optim SGD LR 0.700000 ; Source tokens/s 180 ; Perplexity 7.93
+[04/21/18 11:48:38 INFO] Epoch 4 ; Iteration 200/532 ; Optim SGD LR 0.700000 ; Source tokens/s 176 ; Perplexity 7.80
+[04/21/18 11:55:42 INFO] Epoch 4 ; Iteration 250/532 ; Optim SGD LR 0.700000 ; Source tokens/s 194 ; Perplexity 7.69
+[04/21/18 12:02:24 INFO] Epoch 4 ; Iteration 300/532 ; Optim SGD LR 0.700000 ; Source tokens/s 195 ; Perplexity 7.65
+[04/21/18 12:09:34 INFO] Epoch 4 ; Iteration 350/532 ; Optim SGD LR 0.700000 ; Source tokens/s 178 ; Perplexity 7.59
+[04/21/18 12:16:17 INFO] Epoch 4 ; Iteration 400/532 ; Optim SGD LR 0.700000 ; Source tokens/s 194 ; Perplexity 7.45
+[04/21/18 12:23:34 INFO] Epoch 4 ; Iteration 450/532 ; Optim SGD LR 0.700000 ; Source tokens/s 176 ; Perplexity 7.53
+[04/21/18 12:30:00 INFO] Epoch 4 ; Iteration 500/532 ; Optim SGD LR 0.700000 ; Source tokens/s 181 ; Perplexity 7.38
+[04/21/18 12:34:03 INFO] Epoch 4 ; Iteration 532/532 ; Optim SGD LR 0.700000 ; Source tokens/s 228 ; Perplexity 7.58
+[04/21/18 12:34:03 INFO] Evaluating on the validation dataset...
+[04/21/18 12:34:35 INFO] Validation perplexity: 37.57
+[04/21/18 12:34:35 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch4_37.57.t7'...
+[04/21/18 12:34:36 INFO] 
+[04/21/18 12:40:56 INFO] Epoch 5 ; Iteration 50/532 ; Optim SGD LR 0.490000 ; Source tokens/s 214 ; Perplexity 6.69
+[04/21/18 12:47:28 INFO] Epoch 5 ; Iteration 100/532 ; Optim SGD LR 0.490000 ; Source tokens/s 205 ; Perplexity 6.64
+[04/21/18 12:54:56 INFO] Epoch 5 ; Iteration 150/532 ; Optim SGD LR 0.490000 ; Source tokens/s 176 ; Perplexity 6.45
+[04/21/18 13:12:15 INFO] Epoch 5 ; Iteration 200/532 ; Optim SGD LR 0.490000 ; Source tokens/s 71 ; Perplexity 6.63
+[04/21/18 13:26:19 INFO] Epoch 5 ; Iteration 250/532 ; Optim SGD LR 0.490000 ; Source tokens/s 91 ; Perplexity 6.68
+[04/21/18 13:34:28 INFO] Epoch 5 ; Iteration 300/532 ; Optim SGD LR 0.490000 ; Source tokens/s 156 ; Perplexity 6.39
+[04/21/18 13:41:29 INFO] Epoch 5 ; Iteration 350/532 ; Optim SGD LR 0.490000 ; Source tokens/s 193 ; Perplexity 6.50
+[04/21/18 13:48:24 INFO] Epoch 5 ; Iteration 400/532 ; Optim SGD LR 0.490000 ; Source tokens/s 189 ; Perplexity 6.23
+[04/21/18 13:55:06 INFO] Epoch 5 ; Iteration 450/532 ; Optim SGD LR 0.490000 ; Source tokens/s 196 ; Perplexity 6.47
+[04/21/18 14:02:18 INFO] Epoch 5 ; Iteration 500/532 ; Optim SGD LR 0.490000 ; Source tokens/s 176 ; Perplexity 6.38
+[04/21/18 14:06:11 INFO] Epoch 5 ; Iteration 532/532 ; Optim SGD LR 0.490000 ; Source tokens/s 217 ; Perplexity 6.21
+[04/21/18 14:06:11 INFO] Evaluating on the validation dataset...
+[04/21/18 14:06:51 INFO] Validation perplexity: 22.68
+[04/21/18 14:06:51 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch5_22.68.t7'...
+[04/21/18 14:06:54 INFO] 
+[04/21/18 14:13:54 INFO] Epoch 6 ; Iteration 50/532 ; Optim SGD LR 0.343000 ; Source tokens/s 187 ; Perplexity 6.02
+[04/21/18 14:20:11 INFO] Epoch 6 ; Iteration 100/532 ; Optim SGD LR 0.343000 ; Source tokens/s 203 ; Perplexity 5.93
+[04/21/18 14:27:45 INFO] Epoch 6 ; Iteration 150/532 ; Optim SGD LR 0.343000 ; Source tokens/s 175 ; Perplexity 5.86
+[04/21/18 14:34:38 INFO] Epoch 6 ; Iteration 200/532 ; Optim SGD LR 0.343000 ; Source tokens/s 191 ; Perplexity 5.76
+[04/21/18 14:42:08 INFO] Epoch 6 ; Iteration 250/532 ; Optim SGD LR 0.343000 ; Source tokens/s 169 ; Perplexity 5.98
+[04/21/18 14:48:51 INFO] Epoch 6 ; Iteration 300/532 ; Optim SGD LR 0.343000 ; Source tokens/s 183 ; Perplexity 5.87
+[04/21/18 14:55:33 INFO] Epoch 6 ; Iteration 350/532 ; Optim SGD LR 0.343000 ; Source tokens/s 205 ; Perplexity 5.75
+[04/21/18 15:02:33 INFO] Epoch 6 ; Iteration 400/532 ; Optim SGD LR 0.343000 ; Source tokens/s 192 ; Perplexity 5.89
+[04/21/18 15:09:02 INFO] Epoch 6 ; Iteration 450/532 ; Optim SGD LR 0.343000 ; Source tokens/s 190 ; Perplexity 5.85
+[04/21/18 15:15:39 INFO] Epoch 6 ; Iteration 500/532 ; Optim SGD LR 0.343000 ; Source tokens/s 197 ; Perplexity 5.78
+[04/21/18 15:19:57 INFO] Epoch 6 ; Iteration 532/532 ; Optim SGD LR 0.343000 ; Source tokens/s 209 ; Perplexity 5.66
+[04/21/18 15:19:57 INFO] Evaluating on the validation dataset...
+[04/21/18 15:20:33 INFO] Validation perplexity: 19.26
+[04/21/18 15:20:33 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch6_19.26.t7'...
+[04/21/18 15:20:36 INFO] 
+[04/21/18 15:27:37 INFO] Epoch 7 ; Iteration 50/532 ; Optim SGD LR 0.240100 ; Source tokens/s 190 ; Perplexity 5.53
+[04/21/18 15:34:33 INFO] Epoch 7 ; Iteration 100/532 ; Optim SGD LR 0.240100 ; Source tokens/s 197 ; Perplexity 5.61
+[04/21/18 15:41:04 INFO] Epoch 7 ; Iteration 150/532 ; Optim SGD LR 0.240100 ; Source tokens/s 198 ; Perplexity 5.63
+[04/21/18 15:47:43 INFO] Epoch 7 ; Iteration 200/532 ; Optim SGD LR 0.240100 ; Source tokens/s 197 ; Perplexity 5.55
+[04/21/18 15:54:29 INFO] Epoch 7 ; Iteration 250/532 ; Optim SGD LR 0.240100 ; Source tokens/s 191 ; Perplexity 5.60
+[04/21/18 16:01:28 INFO] Epoch 7 ; Iteration 300/532 ; Optim SGD LR 0.240100 ; Source tokens/s 186 ; Perplexity 5.53
+[04/21/18 16:08:14 INFO] Epoch 7 ; Iteration 350/532 ; Optim SGD LR 0.240100 ; Source tokens/s 187 ; Perplexity 5.49
+[04/21/18 16:14:49 INFO] Epoch 7 ; Iteration 400/532 ; Optim SGD LR 0.240100 ; Source tokens/s 209 ; Perplexity 5.47
+[04/21/18 16:21:54 INFO] Epoch 7 ; Iteration 450/532 ; Optim SGD LR 0.240100 ; Source tokens/s 176 ; Perplexity 5.66
+[04/21/18 16:28:42 INFO] Epoch 7 ; Iteration 500/532 ; Optim SGD LR 0.240100 ; Source tokens/s 188 ; Perplexity 5.55
+[04/21/18 16:32:55 INFO] Epoch 7 ; Iteration 532/532 ; Optim SGD LR 0.240100 ; Source tokens/s 194 ; Perplexity 5.49
+[04/21/18 16:32:55 INFO] Evaluating on the validation dataset...
+[04/21/18 16:33:32 INFO] Validation perplexity: 23.25
+[04/21/18 16:33:32 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch7_23.25.t7'...
+[04/21/18 16:33:35 INFO] 
+[04/21/18 16:40:39 INFO] Epoch 8 ; Iteration 50/532 ; Optim SGD LR 0.168070 ; Source tokens/s 185 ; Perplexity 5.34
+[04/21/18 16:47:18 INFO] Epoch 8 ; Iteration 100/532 ; Optim SGD LR 0.168070 ; Source tokens/s 200 ; Perplexity 5.41
+[04/21/18 16:54:13 INFO] Epoch 8 ; Iteration 150/532 ; Optim SGD LR 0.168070 ; Source tokens/s 195 ; Perplexity 5.35
+[04/21/18 17:00:49 INFO] Epoch 8 ; Iteration 200/532 ; Optim SGD LR 0.168070 ; Source tokens/s 198 ; Perplexity 5.47
+[04/21/18 17:07:29 INFO] Epoch 8 ; Iteration 250/532 ; Optim SGD LR 0.168070 ; Source tokens/s 202 ; Perplexity 5.45
+[04/21/18 17:14:12 INFO] Epoch 8 ; Iteration 300/532 ; Optim SGD LR 0.168070 ; Source tokens/s 192 ; Perplexity 5.51
+[04/21/18 17:20:56 INFO] Epoch 8 ; Iteration 350/532 ; Optim SGD LR 0.168070 ; Source tokens/s 197 ; Perplexity 5.48
+[04/21/18 17:27:52 INFO] Epoch 8 ; Iteration 400/532 ; Optim SGD LR 0.168070 ; Source tokens/s 184 ; Perplexity 5.27
+[04/21/18 17:34:12 INFO] Epoch 8 ; Iteration 450/532 ; Optim SGD LR 0.168070 ; Source tokens/s 190 ; Perplexity 5.43
+[04/21/18 17:41:15 INFO] Epoch 8 ; Iteration 500/532 ; Optim SGD LR 0.168070 ; Source tokens/s 184 ; Perplexity 5.32
+[04/21/18 17:45:04 INFO] Epoch 8 ; Iteration 532/532 ; Optim SGD LR 0.168070 ; Source tokens/s 222 ; Perplexity 5.17
+[04/21/18 17:45:04 INFO] Evaluating on the validation dataset...
+[04/21/18 17:45:42 INFO] Validation perplexity: 24.35
+[04/21/18 17:45:42 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch8_24.35.t7'...
+[04/21/18 17:45:47 INFO] 
+[04/21/18 17:52:35 INFO] Epoch 9 ; Iteration 50/532 ; Optim SGD LR 0.117649 ; Source tokens/s 195 ; Perplexity 5.31
+[04/21/18 17:59:02 INFO] Epoch 9 ; Iteration 100/532 ; Optim SGD LR 0.117649 ; Source tokens/s 212 ; Perplexity 5.07
+[04/21/18 18:05:46 INFO] Epoch 9 ; Iteration 150/532 ; Optim SGD LR 0.117649 ; Source tokens/s 188 ; Perplexity 5.37
+[04/21/18 18:12:27 INFO] Epoch 9 ; Iteration 200/532 ; Optim SGD LR 0.117649 ; Source tokens/s 197 ; Perplexity 5.26
+[04/21/18 18:19:10 INFO] Epoch 9 ; Iteration 250/532 ; Optim SGD LR 0.117649 ; Source tokens/s 184 ; Perplexity 5.37
+[04/21/18 18:25:27 INFO] Epoch 9 ; Iteration 300/532 ; Optim SGD LR 0.117649 ; Source tokens/s 206 ; Perplexity 5.27
+[04/21/18 18:32:43 INFO] Epoch 9 ; Iteration 350/532 ; Optim SGD LR 0.117649 ; Source tokens/s 179 ; Perplexity 5.32
+[04/21/18 18:39:29 INFO] Epoch 9 ; Iteration 400/532 ; Optim SGD LR 0.117649 ; Source tokens/s 190 ; Perplexity 5.41
+[04/21/18 18:46:11 INFO] Epoch 9 ; Iteration 450/532 ; Optim SGD LR 0.117649 ; Source tokens/s 184 ; Perplexity 5.30
+[04/21/18 18:52:21 INFO] Epoch 9 ; Iteration 500/532 ; Optim SGD LR 0.117649 ; Source tokens/s 225 ; Perplexity 5.21
+[04/21/18 18:56:30 INFO] Epoch 9 ; Iteration 532/532 ; Optim SGD LR 0.117649 ; Source tokens/s 211 ; Perplexity 5.18
+[04/21/18 18:56:30 INFO] Evaluating on the validation dataset...
+[04/21/18 18:57:07 INFO] Validation perplexity: 25.49
+[04/21/18 18:57:07 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch9_25.49.t7'...
+[04/21/18 18:57:10 INFO] 
+[04/21/18 19:03:53 INFO] Epoch 10 ; Iteration 50/532 ; Optim SGD LR 0.082354 ; Source tokens/s 199 ; Perplexity 5.37
+[04/21/18 19:11:02 INFO] Epoch 10 ; Iteration 100/532 ; Optim SGD LR 0.082354 ; Source tokens/s 180 ; Perplexity 5.11
+[04/21/18 19:17:38 INFO] Epoch 10 ; Iteration 150/532 ; Optim SGD LR 0.082354 ; Source tokens/s 178 ; Perplexity 5.26
+[04/21/18 19:24:40 INFO] Epoch 10 ; Iteration 200/532 ; Optim SGD LR 0.082354 ; Source tokens/s 191 ; Perplexity 5.25
+[04/21/18 19:32:24 INFO] Epoch 10 ; Iteration 250/532 ; Optim SGD LR 0.082354 ; Source tokens/s 167 ; Perplexity 5.26
+[04/21/18 19:40:14 INFO] Epoch 10 ; Iteration 300/532 ; Optim SGD LR 0.082354 ; Source tokens/s 166 ; Perplexity 5.18
+[04/21/18 19:47:06 INFO] Epoch 10 ; Iteration 350/532 ; Optim SGD LR 0.082354 ; Source tokens/s 195 ; Perplexity 5.16
+[04/21/18 19:54:14 INFO] Epoch 10 ; Iteration 400/532 ; Optim SGD LR 0.082354 ; Source tokens/s 194 ; Perplexity 5.13
+[04/21/18 20:01:24 INFO] Epoch 10 ; Iteration 450/532 ; Optim SGD LR 0.082354 ; Source tokens/s 174 ; Perplexity 5.20
+[04/21/18 20:08:37 INFO] Epoch 10 ; Iteration 500/532 ; Optim SGD LR 0.082354 ; Source tokens/s 188 ; Perplexity 5.20
+[04/21/18 20:13:02 INFO] Epoch 10 ; Iteration 532/532 ; Optim SGD LR 0.082354 ; Source tokens/s 187 ; Perplexity 5.08
+[04/21/18 20:13:02 INFO] Evaluating on the validation dataset...
+[04/21/18 20:13:37 INFO] Validation perplexity: 27.08
+[04/21/18 20:13:37 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch10_27.08.t7'...
+[04/21/18 20:13:40 INFO] 
+[04/21/18 20:20:34 INFO] Epoch 11 ; Iteration 50/532 ; Optim SGD LR 0.057648 ; Source tokens/s 201 ; Perplexity 5.15
+[04/21/18 20:28:06 INFO] Epoch 11 ; Iteration 100/532 ; Optim SGD LR 0.057648 ; Source tokens/s 184 ; Perplexity 5.19
+[04/21/18 20:37:48 INFO] Epoch 11 ; Iteration 150/532 ; Optim SGD LR 0.057648 ; Source tokens/s 133 ; Perplexity 5.20
+[04/21/18 20:48:09 INFO] Epoch 11 ; Iteration 200/532 ; Optim SGD LR 0.057648 ; Source tokens/s 121 ; Perplexity 5.03
+[04/21/18 20:55:14 INFO] Epoch 11 ; Iteration 250/532 ; Optim SGD LR 0.057648 ; Source tokens/s 179 ; Perplexity 5.12
+[04/21/18 21:01:45 INFO] Epoch 11 ; Iteration 300/532 ; Optim SGD LR 0.057648 ; Source tokens/s 191 ; Perplexity 5.16
+[04/21/18 21:08:42 INFO] Epoch 11 ; Iteration 350/532 ; Optim SGD LR 0.057648 ; Source tokens/s 176 ; Perplexity 5.18
+[04/21/18 21:15:33 INFO] Epoch 11 ; Iteration 400/532 ; Optim SGD LR 0.057648 ; Source tokens/s 196 ; Perplexity 5.12
+[04/21/18 21:23:04 INFO] Epoch 11 ; Iteration 450/532 ; Optim SGD LR 0.057648 ; Source tokens/s 173 ; Perplexity 5.23
+[04/21/18 21:30:56 INFO] Epoch 11 ; Iteration 500/532 ; Optim SGD LR 0.057648 ; Source tokens/s 172 ; Perplexity 5.08
+[04/21/18 21:35:47 INFO] Epoch 11 ; Iteration 532/532 ; Optim SGD LR 0.057648 ; Source tokens/s 171 ; Perplexity 5.21
+[04/21/18 21:35:47 INFO] Evaluating on the validation dataset...
+[04/21/18 21:36:24 INFO] Validation perplexity: 28.87
+[04/21/18 21:36:24 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch11_28.87.t7'...
+[04/21/18 21:36:28 INFO] 
+[04/21/18 21:43:13 INFO] Epoch 12 ; Iteration 50/532 ; Optim SGD LR 0.040354 ; Source tokens/s 195 ; Perplexity 5.14
+[04/21/18 21:50:51 INFO] Epoch 12 ; Iteration 100/532 ; Optim SGD LR 0.040354 ; Source tokens/s 169 ; Perplexity 5.20
+[04/21/18 21:59:17 INFO] Epoch 12 ; Iteration 150/532 ; Optim SGD LR 0.040354 ; Source tokens/s 157 ; Perplexity 5.23
+[04/21/18 22:06:41 INFO] Epoch 12 ; Iteration 200/532 ; Optim SGD LR 0.040354 ; Source tokens/s 191 ; Perplexity 4.99
+[04/21/18 22:14:10 INFO] Epoch 12 ; Iteration 250/532 ; Optim SGD LR 0.040354 ; Source tokens/s 172 ; Perplexity 5.03
+[04/21/18 22:23:09 INFO] Epoch 12 ; Iteration 300/532 ; Optim SGD LR 0.040354 ; Source tokens/s 144 ; Perplexity 5.10
+[04/21/18 22:30:34 INFO] Epoch 12 ; Iteration 350/532 ; Optim SGD LR 0.040354 ; Source tokens/s 169 ; Perplexity 5.15
+[04/21/18 22:38:38 INFO] Epoch 12 ; Iteration 400/532 ; Optim SGD LR 0.040354 ; Source tokens/s 160 ; Perplexity 5.06
+[04/21/18 22:47:07 INFO] Epoch 12 ; Iteration 450/532 ; Optim SGD LR 0.040354 ; Source tokens/s 148 ; Perplexity 5.07
+[04/21/18 22:54:42 INFO] Epoch 12 ; Iteration 500/532 ; Optim SGD LR 0.040354 ; Source tokens/s 189 ; Perplexity 5.01
+[04/21/18 23:00:09 INFO] Epoch 12 ; Iteration 532/532 ; Optim SGD LR 0.040354 ; Source tokens/s 134 ; Perplexity 5.37
+[04/21/18 23:00:09 INFO] Evaluating on the validation dataset...
+[04/21/18 23:00:52 INFO] Validation perplexity: 28.02
+[04/21/18 23:00:52 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch12_28.02.t7'...
+[04/21/18 23:00:56 INFO] 
+[04/21/18 23:09:01 INFO] Epoch 13 ; Iteration 50/532 ; Optim SGD LR 0.028248 ; Source tokens/s 158 ; Perplexity 5.07
+[04/21/18 23:16:04 INFO] Epoch 13 ; Iteration 100/532 ; Optim SGD LR 0.028248 ; Source tokens/s 180 ; Perplexity 5.01
+[04/21/18 23:24:19 INFO] Epoch 13 ; Iteration 150/532 ; Optim SGD LR 0.028248 ; Source tokens/s 160 ; Perplexity 5.06
+[04/21/18 23:32:00 INFO] Epoch 13 ; Iteration 200/532 ; Optim SGD LR 0.028248 ; Source tokens/s 167 ; Perplexity 5.08
+[04/21/18 23:39:22 INFO] Epoch 13 ; Iteration 250/532 ; Optim SGD LR 0.028248 ; Source tokens/s 180 ; Perplexity 5.03
+[04/21/18 23:46:30 INFO] Epoch 13 ; Iteration 300/532 ; Optim SGD LR 0.028248 ; Source tokens/s 177 ; Perplexity 5.27
+[04/21/18 23:52:16 INFO] Epoch 13 ; Iteration 350/532 ; Optim SGD LR 0.028248 ; Source tokens/s 233 ; Perplexity 5.07
+[04/21/18 23:58:42 INFO] Epoch 13 ; Iteration 400/532 ; Optim SGD LR 0.028248 ; Source tokens/s 200 ; Perplexity 5.17
+[04/22/18 00:04:47 INFO] Epoch 13 ; Iteration 450/532 ; Optim SGD LR 0.028248 ; Source tokens/s 209 ; Perplexity 5.03
+[04/22/18 00:11:13 INFO] Epoch 13 ; Iteration 500/532 ; Optim SGD LR 0.028248 ; Source tokens/s 203 ; Perplexity 5.17
+[04/22/18 00:15:05 INFO] Epoch 13 ; Iteration 532/532 ; Optim SGD LR 0.028248 ; Source tokens/s 242 ; Perplexity 4.92
+[04/22/18 00:15:05 INFO] Evaluating on the validation dataset...
+[04/22/18 00:15:41 INFO] Validation perplexity: 28.44
+[04/22/18 00:15:41 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch13_28.44.t7'...
+[04/22/18 06:14:28 INFO] Training Sequence to Sequence with Attention model...
+[04/22/18 06:14:28 INFO] Loading data from '/data/kyoto-train.100k-train.t7'...
+[04/22/18 06:14:30 INFO]  * vocabulary size: source = 6442; target = 4713
+[04/22/18 06:14:30 INFO]  * additional features: source = 0; target = 0
+[04/22/18 06:14:30 INFO]  * maximum sequence length: source = 50; target = 51
+[04/22/18 06:14:30 INFO]  * number of training sentences: 41966
+[04/22/18 06:14:30 INFO]  * number of batches: 494
+[04/22/18 06:14:30 INFO]    - source sequence lengths: equal
+[04/22/18 06:14:30 INFO]    - maximum size: 160 sentences / 1800 tokens
+[04/22/18 06:14:30 INFO]    - average size: 84.95
+[04/22/18 06:14:30 INFO]    - capacity: 100.00%
+[04/22/18 06:14:30 INFO] Building model...
+[04/22/18 06:14:30 INFO]  * Encoder:
+[04/22/18 06:14:30 INFO]    - word embeddings size: 500
+[04/22/18 06:14:30 INFO]    - type: unidirectional RNN
+[04/22/18 06:14:30 INFO]    - structure: cell = LSTM; layers = 2; rnn_size = 500; dropout = 0.3 (naive)
+[04/22/18 06:14:30 INFO]  * Decoder:
+[04/22/18 06:14:30 INFO]    - word embeddings size: 500
+[04/22/18 06:14:30 INFO]    - attention: global (general)
+[04/22/18 06:14:30 INFO]    - structure: cell = LSTM; layers = 2; rnn_size = 500; dropout = 0.3 (naive)
+[04/22/18 06:14:30 INFO]  * Bridge: copy
+[04/22/18 06:14:30 INFO] Initializing parameters...
+[04/22/18 06:14:31 INFO]  * number of parameters: 17704713
+[04/22/18 06:14:31 INFO] Preparing memory optimization...
+[04/22/18 06:14:31 INFO]  * sharing 69% of output/gradInput tensors memory between clones
+[04/22/18 06:14:31 INFO] Preallocating memory
+[04/22/18 06:14:45 INFO] Start training from epoch 1 to 13...
+[04/22/18 06:14:45 INFO] 
+[04/22/18 06:19:19 INFO] Epoch 1 ; Iteration 50/494 ; Optim SGD LR 1.000000 ; Source tokens/s 278 ; Perplexity 8326.50
+[04/22/18 06:24:09 INFO] Epoch 1 ; Iteration 100/494 ; Optim SGD LR 1.000000 ; Source tokens/s 274 ; Perplexity 7135.61
+[04/22/18 06:29:03 INFO] Epoch 1 ; Iteration 150/494 ; Optim SGD LR 1.000000 ; Source tokens/s 272 ; Perplexity 504.15
+[04/22/18 06:34:29 INFO] Epoch 1 ; Iteration 200/494 ; Optim SGD LR 1.000000 ; Source tokens/s 240 ; Perplexity 99.45
+[04/22/18 06:39:30 INFO] Epoch 1 ; Iteration 250/494 ; Optim SGD LR 1.000000 ; Source tokens/s 279 ; Perplexity 45.97
+[04/22/18 06:44:34 INFO] Epoch 1 ; Iteration 300/494 ; Optim SGD LR 1.000000 ; Source tokens/s 262 ; Perplexity 33.69
+[04/22/18 06:49:21 INFO] Epoch 1 ; Iteration 350/494 ; Optim SGD LR 1.000000 ; Source tokens/s 269 ; Perplexity 28.04
+[04/22/18 06:54:31 INFO] Epoch 1 ; Iteration 400/494 ; Optim SGD LR 1.000000 ; Source tokens/s 265 ; Perplexity 23.46
+[04/22/18 06:59:43 INFO] Epoch 1 ; Iteration 450/494 ; Optim SGD LR 1.000000 ; Source tokens/s 241 ; Perplexity 21.19
+[04/22/18 07:04:29 INFO] Epoch 1 ; Iteration 494/494 ; Optim SGD LR 1.000000 ; Source tokens/s 223 ; Perplexity 20.02
+[04/22/18 07:04:29 INFO] Evaluating on the validation dataset...
+[04/22/18 07:04:52 INFO] Validation perplexity: 32.73
+[04/22/18 07:04:52 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch1_32.73.t7'...
+[04/22/18 07:04:55 INFO] 
+[04/22/18 07:10:15 INFO] Epoch 2 ; Iteration 50/494 ; Optim SGD LR 1.000000 ; Source tokens/s 237 ; Perplexity 18.80
+[04/22/18 07:15:15 INFO] Epoch 2 ; Iteration 100/494 ; Optim SGD LR 1.000000 ; Source tokens/s 257 ; Perplexity 17.77
+[04/22/18 07:20:27 INFO] Epoch 2 ; Iteration 150/494 ; Optim SGD LR 1.000000 ; Source tokens/s 266 ; Perplexity 16.98
+[04/22/18 07:25:27 INFO] Epoch 2 ; Iteration 200/494 ; Optim SGD LR 1.000000 ; Source tokens/s 272 ; Perplexity 16.18
+[04/22/18 07:30:40 INFO] Epoch 2 ; Iteration 250/494 ; Optim SGD LR 1.000000 ; Source tokens/s 243 ; Perplexity 15.76
+[04/22/18 07:35:34 INFO] Epoch 2 ; Iteration 300/494 ; Optim SGD LR 1.000000 ; Source tokens/s 267 ; Perplexity 15.52
+[04/22/18 07:40:45 INFO] Epoch 2 ; Iteration 350/494 ; Optim SGD LR 1.000000 ; Source tokens/s 260 ; Perplexity 15.14
+[04/22/18 07:46:08 INFO] Epoch 2 ; Iteration 400/494 ; Optim SGD LR 1.000000 ; Source tokens/s 246 ; Perplexity 14.15
+[04/22/18 07:51:16 INFO] Epoch 2 ; Iteration 450/494 ; Optim SGD LR 1.000000 ; Source tokens/s 254 ; Perplexity 14.66
+[04/22/18 07:55:53 INFO] Epoch 2 ; Iteration 494/494 ; Optim SGD LR 1.000000 ; Source tokens/s 235 ; Perplexity 13.63
+[04/22/18 07:55:53 INFO] Evaluating on the validation dataset...
+[04/22/18 07:56:17 INFO] Validation perplexity: 19.97
+[04/22/18 07:56:17 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch2_19.97.t7'...
+[04/22/18 07:56:19 INFO] 
+[04/22/18 08:01:08 INFO] Epoch 3 ; Iteration 50/494 ; Optim SGD LR 1.000000 ; Source tokens/s 251 ; Perplexity 13.56
+[04/22/18 08:05:44 INFO] Epoch 3 ; Iteration 100/494 ; Optim SGD LR 1.000000 ; Source tokens/s 273 ; Perplexity 13.73
+[04/22/18 08:11:07 INFO] Epoch 3 ; Iteration 150/494 ; Optim SGD LR 1.000000 ; Source tokens/s 258 ; Perplexity 12.94
+[04/22/18 08:16:41 INFO] Epoch 3 ; Iteration 200/494 ; Optim SGD LR 1.000000 ; Source tokens/s 235 ; Perplexity 12.60
+[04/22/18 08:21:58 INFO] Epoch 3 ; Iteration 250/494 ; Optim SGD LR 1.000000 ; Source tokens/s 261 ; Perplexity 12.84
+[04/22/18 08:27:15 INFO] Epoch 3 ; Iteration 300/494 ; Optim SGD LR 1.000000 ; Source tokens/s 262 ; Perplexity 13.00
+[04/22/18 08:32:36 INFO] Epoch 3 ; Iteration 350/494 ; Optim SGD LR 1.000000 ; Source tokens/s 259 ; Perplexity 12.22
+[04/22/18 08:37:44 INFO] Epoch 3 ; Iteration 400/494 ; Optim SGD LR 1.000000 ; Source tokens/s 233 ; Perplexity 12.66
+[04/22/18 08:43:01 INFO] Epoch 3 ; Iteration 450/494 ; Optim SGD LR 1.000000 ; Source tokens/s 253 ; Perplexity 12.33
+[04/22/18 08:48:21 INFO] Epoch 3 ; Iteration 494/494 ; Optim SGD LR 1.000000 ; Source tokens/s 203 ; Perplexity 11.79
+[04/22/18 08:48:21 INFO] Evaluating on the validation dataset...
+[04/22/18 08:48:51 INFO] Validation perplexity: 18.33
+[04/22/18 08:48:51 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch3_18.33.t7'...
+[04/22/18 08:48:52 INFO] 
+[04/22/18 08:55:20 INFO] Epoch 4 ; Iteration 50/494 ; Optim SGD LR 1.000000 ; Source tokens/s 210 ; Perplexity 12.19
+[04/22/18 09:01:49 INFO] Epoch 4 ; Iteration 100/494 ; Optim SGD LR 1.000000 ; Source tokens/s 212 ; Perplexity 11.93
+[04/22/18 09:07:14 INFO] Epoch 4 ; Iteration 150/494 ; Optim SGD LR 1.000000 ; Source tokens/s 241 ; Perplexity 11.37
+[04/22/18 09:13:07 INFO] Epoch 4 ; Iteration 200/494 ; Optim SGD LR 1.000000 ; Source tokens/s 233 ; Perplexity 11.36
+[04/22/18 09:18:32 INFO] Epoch 4 ; Iteration 250/494 ; Optim SGD LR 1.000000 ; Source tokens/s 223 ; Perplexity 11.11
+[04/22/18 09:24:20 INFO] Epoch 4 ; Iteration 300/494 ; Optim SGD LR 1.000000 ; Source tokens/s 217 ; Perplexity 11.13
+[04/22/18 09:29:41 INFO] Epoch 4 ; Iteration 350/494 ; Optim SGD LR 1.000000 ; Source tokens/s 237 ; Perplexity 11.35
+[04/22/18 09:34:51 INFO] Epoch 4 ; Iteration 400/494 ; Optim SGD LR 1.000000 ; Source tokens/s 252 ; Perplexity 10.87
+[04/22/18 09:39:47 INFO] Epoch 4 ; Iteration 450/494 ; Optim SGD LR 1.000000 ; Source tokens/s 270 ; Perplexity 10.97
+[04/22/18 09:44:54 INFO] Epoch 4 ; Iteration 494/494 ; Optim SGD LR 1.000000 ; Source tokens/s 226 ; Perplexity 10.91
+[04/22/18 09:44:54 INFO] Evaluating on the validation dataset...
+[04/22/18 09:45:20 INFO] Validation perplexity: 16.17
+[04/22/18 09:45:20 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch4_16.17.t7'...
+[04/22/18 09:45:23 INFO] 
+[04/22/18 09:50:33 INFO] Epoch 5 ; Iteration 50/494 ; Optim SGD LR 1.000000 ; Source tokens/s 259 ; Perplexity 10.47
+[04/22/18 09:56:27 INFO] Epoch 5 ; Iteration 100/494 ; Optim SGD LR 1.000000 ; Source tokens/s 220 ; Perplexity 10.38
+[04/22/18 10:01:37 INFO] Epoch 5 ; Iteration 150/494 ; Optim SGD LR 1.000000 ; Source tokens/s 251 ; Perplexity 10.72
+[04/22/18 10:07:43 INFO] Epoch 5 ; Iteration 200/494 ; Optim SGD LR 1.000000 ; Source tokens/s 204 ; Perplexity 10.50
+[04/22/18 10:14:33 INFO] Epoch 5 ; Iteration 250/494 ; Optim SGD LR 1.000000 ; Source tokens/s 193 ; Perplexity 10.32
+[04/22/18 10:21:10 INFO] Epoch 5 ; Iteration 300/494 ; Optim SGD LR 1.000000 ; Source tokens/s 197 ; Perplexity 10.23
+[04/22/18 10:27:50 INFO] Epoch 5 ; Iteration 350/494 ; Optim SGD LR 1.000000 ; Source tokens/s 205 ; Perplexity 10.13
+[04/22/18 10:34:23 INFO] Epoch 5 ; Iteration 400/494 ; Optim SGD LR 1.000000 ; Source tokens/s 192 ; Perplexity 10.47
+[04/22/18 10:41:27 INFO] Epoch 5 ; Iteration 450/494 ; Optim SGD LR 1.000000 ; Source tokens/s 191 ; Perplexity 10.30
+[04/22/18 10:46:15 INFO] Epoch 5 ; Iteration 494/494 ; Optim SGD LR 1.000000 ; Source tokens/s 241 ; Perplexity 9.95
+[04/22/18 10:46:15 INFO] Evaluating on the validation dataset...
+[04/22/18 10:46:40 INFO] Validation perplexity: 15.85
+[04/22/18 10:46:40 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch5_15.85.t7'...
+[04/22/18 10:46:41 INFO] 
+[04/22/18 10:51:45 INFO] Epoch 6 ; Iteration 50/494 ; Optim SGD LR 1.000000 ; Source tokens/s 271 ; Perplexity 10.16
+[04/22/18 10:56:42 INFO] Epoch 6 ; Iteration 100/494 ; Optim SGD LR 1.000000 ; Source tokens/s 272 ; Perplexity 9.47
+[04/22/18 11:01:39 INFO] Epoch 6 ; Iteration 150/494 ; Optim SGD LR 1.000000 ; Source tokens/s 274 ; Perplexity 9.97
+[04/22/18 11:07:05 INFO] Epoch 6 ; Iteration 200/494 ; Optim SGD LR 1.000000 ; Source tokens/s 235 ; Perplexity 9.67
+[04/22/18 11:12:21 INFO] Epoch 6 ; Iteration 250/494 ; Optim SGD LR 1.000000 ; Source tokens/s 259 ; Perplexity 9.67
+[04/22/18 11:17:18 INFO] Epoch 6 ; Iteration 300/494 ; Optim SGD LR 1.000000 ; Source tokens/s 252 ; Perplexity 9.65
+[04/22/18 11:22:09 INFO] Epoch 6 ; Iteration 350/494 ; Optim SGD LR 1.000000 ; Source tokens/s 258 ; Perplexity 9.63
+[04/22/18 11:27:09 INFO] Epoch 6 ; Iteration 400/494 ; Optim SGD LR 1.000000 ; Source tokens/s 260 ; Perplexity 9.54
+[04/22/18 11:32:23 INFO] Epoch 6 ; Iteration 450/494 ; Optim SGD LR 1.000000 ; Source tokens/s 246 ; Perplexity 9.78
+[04/22/18 11:37:06 INFO] Epoch 6 ; Iteration 494/494 ; Optim SGD LR 1.000000 ; Source tokens/s 239 ; Perplexity 9.61
+[04/22/18 11:37:06 INFO] Evaluating on the validation dataset...
+[04/22/18 11:37:32 INFO] Validation perplexity: 12.83
+[04/22/18 11:37:32 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch6_12.83.t7'...
+[04/22/18 11:37:34 INFO] 
+[04/22/18 11:43:10 INFO] Epoch 7 ; Iteration 50/494 ; Optim SGD LR 1.000000 ; Source tokens/s 222 ; Perplexity 9.32
+[04/22/18 11:48:42 INFO] Epoch 7 ; Iteration 100/494 ; Optim SGD LR 1.000000 ; Source tokens/s 235 ; Perplexity 9.04
+[04/22/18 11:54:09 INFO] Epoch 7 ; Iteration 150/494 ; Optim SGD LR 1.000000 ; Source tokens/s 245 ; Perplexity 9.30
+[04/22/18 11:59:51 INFO] Epoch 7 ; Iteration 200/494 ; Optim SGD LR 1.000000 ; Source tokens/s 249 ; Perplexity 9.26
+[04/22/18 12:05:40 INFO] Epoch 7 ; Iteration 250/494 ; Optim SGD LR 1.000000 ; Source tokens/s 207 ; Perplexity 8.98
+[04/22/18 12:11:07 INFO] Epoch 7 ; Iteration 300/494 ; Optim SGD LR 1.000000 ; Source tokens/s 233 ; Perplexity 9.03
+[04/22/18 12:16:29 INFO] Epoch 7 ; Iteration 350/494 ; Optim SGD LR 1.000000 ; Source tokens/s 254 ; Perplexity 8.94
+[04/22/18 12:21:51 INFO] Epoch 7 ; Iteration 400/494 ; Optim SGD LR 1.000000 ; Source tokens/s 247 ; Perplexity 8.85
+[04/22/18 12:27:55 INFO] Epoch 7 ; Iteration 450/494 ; Optim SGD LR 1.000000 ; Source tokens/s 210 ; Perplexity 9.12
+[04/22/18 12:33:04 INFO] Epoch 7 ; Iteration 494/494 ; Optim SGD LR 1.000000 ; Source tokens/s 233 ; Perplexity 8.61
+[04/22/18 12:33:04 INFO] Evaluating on the validation dataset...
+[04/22/18 12:33:33 INFO] Validation perplexity: 14.19
+[04/22/18 12:33:33 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch7_14.19.t7'...
+[04/22/18 12:33:35 INFO] 
+[04/22/18 12:38:59 INFO] Epoch 8 ; Iteration 50/494 ; Optim SGD LR 0.700000 ; Source tokens/s 231 ; Perplexity 7.52
+[04/22/18 12:44:45 INFO] Epoch 8 ; Iteration 100/494 ; Optim SGD LR 0.700000 ; Source tokens/s 234 ; Perplexity 7.10
+[04/22/18 12:50:28 INFO] Epoch 8 ; Iteration 150/494 ; Optim SGD LR 0.700000 ; Source tokens/s 234 ; Perplexity 7.24
+[04/22/18 12:55:40 INFO] Epoch 8 ; Iteration 200/494 ; Optim SGD LR 0.700000 ; Source tokens/s 254 ; Perplexity 6.96
+[04/22/18 13:01:17 INFO] Epoch 8 ; Iteration 250/494 ; Optim SGD LR 0.700000 ; Source tokens/s 251 ; Perplexity 7.03
+[04/22/18 13:06:56 INFO] Epoch 8 ; Iteration 300/494 ; Optim SGD LR 0.700000 ; Source tokens/s 230 ; Perplexity 7.15
+[04/22/18 13:13:00 INFO] Epoch 8 ; Iteration 350/494 ; Optim SGD LR 0.700000 ; Source tokens/s 218 ; Perplexity 7.24
+[04/22/18 13:18:20 INFO] Epoch 8 ; Iteration 400/494 ; Optim SGD LR 0.700000 ; Source tokens/s 244 ; Perplexity 7.07
+[04/22/18 13:24:15 INFO] Epoch 8 ; Iteration 450/494 ; Optim SGD LR 0.700000 ; Source tokens/s 205 ; Perplexity 7.19
+[04/22/18 13:29:06 INFO] Epoch 8 ; Iteration 494/494 ; Optim SGD LR 0.700000 ; Source tokens/s 231 ; Perplexity 7.12
+[04/22/18 13:29:06 INFO] Evaluating on the validation dataset...
+[04/22/18 13:29:35 INFO] Validation perplexity: 10.34
+[04/22/18 13:29:35 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch8_10.34.t7'...
+[04/22/18 13:29:38 INFO] 
+[04/22/18 13:35:42 INFO] Epoch 9 ; Iteration 50/494 ; Optim SGD LR 0.490000 ; Source tokens/s 226 ; Perplexity 6.16
+[04/22/18 13:41:02 INFO] Epoch 9 ; Iteration 100/494 ; Optim SGD LR 0.490000 ; Source tokens/s 246 ; Perplexity 6.23
+[04/22/18 13:46:38 INFO] Epoch 9 ; Iteration 150/494 ; Optim SGD LR 0.490000 ; Source tokens/s 233 ; Perplexity 6.35
+[04/22/18 13:52:03 INFO] Epoch 9 ; Iteration 200/494 ; Optim SGD LR 0.490000 ; Source tokens/s 234 ; Perplexity 6.05
+[04/22/18 13:57:33 INFO] Epoch 9 ; Iteration 250/494 ; Optim SGD LR 0.490000 ; Source tokens/s 246 ; Perplexity 6.18
+[04/22/18 14:03:24 INFO] Epoch 9 ; Iteration 300/494 ; Optim SGD LR 0.490000 ; Source tokens/s 224 ; Perplexity 6.13
+[04/22/18 14:09:08 INFO] Epoch 9 ; Iteration 350/494 ; Optim SGD LR 0.490000 ; Source tokens/s 239 ; Perplexity 6.27
+[04/22/18 14:14:39 INFO] Epoch 9 ; Iteration 400/494 ; Optim SGD LR 0.490000 ; Source tokens/s 229 ; Perplexity 6.23
+[04/22/18 14:20:18 INFO] Epoch 9 ; Iteration 450/494 ; Optim SGD LR 0.490000 ; Source tokens/s 228 ; Perplexity 6.05
+[04/22/18 14:25:04 INFO] Epoch 9 ; Iteration 494/494 ; Optim SGD LR 0.490000 ; Source tokens/s 229 ; Perplexity 6.20
+[04/22/18 14:25:04 INFO] Evaluating on the validation dataset...
+[04/22/18 14:25:33 INFO] Validation perplexity: 9.09
+[04/22/18 14:25:33 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch9_9.09.t7'...
+[04/22/18 14:25:34 INFO] 
+[04/22/18 14:30:58 INFO] Epoch 10 ; Iteration 50/494 ; Optim SGD LR 0.343000 ; Source tokens/s 243 ; Perplexity 5.83
+[04/22/18 14:36:27 INFO] Epoch 10 ; Iteration 100/494 ; Optim SGD LR 0.343000 ; Source tokens/s 244 ; Perplexity 5.73
+[04/22/18 14:41:58 INFO] Epoch 10 ; Iteration 150/494 ; Optim SGD LR 0.343000 ; Source tokens/s 244 ; Perplexity 5.56
+[04/22/18 14:47:51 INFO] Epoch 10 ; Iteration 200/494 ; Optim SGD LR 0.343000 ; Source tokens/s 213 ; Perplexity 5.80
+[04/22/18 14:53:29 INFO] Epoch 10 ; Iteration 250/494 ; Optim SGD LR 0.343000 ; Source tokens/s 219 ; Perplexity 5.61
+[04/22/18 14:59:15 INFO] Epoch 10 ; Iteration 300/494 ; Optim SGD LR 0.343000 ; Source tokens/s 227 ; Perplexity 5.65
+[04/22/18 15:04:57 INFO] Epoch 10 ; Iteration 350/494 ; Optim SGD LR 0.343000 ; Source tokens/s 236 ; Perplexity 5.62
+[04/22/18 15:10:36 INFO] Epoch 10 ; Iteration 400/494 ; Optim SGD LR 0.343000 ; Source tokens/s 230 ; Perplexity 5.74
+[04/22/18 15:16:16 INFO] Epoch 10 ; Iteration 450/494 ; Optim SGD LR 0.343000 ; Source tokens/s 246 ; Perplexity 5.63
+[04/22/18 15:21:04 INFO] Epoch 10 ; Iteration 494/494 ; Optim SGD LR 0.343000 ; Source tokens/s 225 ; Perplexity 5.65
+[04/22/18 15:21:04 INFO] Evaluating on the validation dataset...
+[04/22/18 15:21:33 INFO] Validation perplexity: 8.16
+[04/22/18 15:21:33 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch10_8.16.t7'...
+[04/22/18 15:21:36 INFO] 
+[04/22/18 15:26:56 INFO] Epoch 11 ; Iteration 50/494 ; Optim SGD LR 0.240100 ; Source tokens/s 254 ; Perplexity 5.31
+[04/22/18 15:32:42 INFO] Epoch 11 ; Iteration 100/494 ; Optim SGD LR 0.240100 ; Source tokens/s 227 ; Perplexity 5.51
+[04/22/18 15:38:18 INFO] Epoch 11 ; Iteration 150/494 ; Optim SGD LR 0.240100 ; Source tokens/s 237 ; Perplexity 5.43
+[04/22/18 15:43:57 INFO] Epoch 11 ; Iteration 200/494 ; Optim SGD LR 0.240100 ; Source tokens/s 234 ; Perplexity 5.44
+[04/22/18 15:49:57 INFO] Epoch 11 ; Iteration 250/494 ; Optim SGD LR 0.240100 ; Source tokens/s 225 ; Perplexity 5.48
+[04/22/18 15:55:43 INFO] Epoch 11 ; Iteration 300/494 ; Optim SGD LR 0.240100 ; Source tokens/s 225 ; Perplexity 5.55
+[04/22/18 16:01:04 INFO] Epoch 11 ; Iteration 350/494 ; Optim SGD LR 0.240100 ; Source tokens/s 236 ; Perplexity 5.40
+[04/22/18 16:06:28 INFO] Epoch 11 ; Iteration 400/494 ; Optim SGD LR 0.240100 ; Source tokens/s 259 ; Perplexity 5.35
+[04/22/18 16:12:04 INFO] Epoch 11 ; Iteration 450/494 ; Optim SGD LR 0.240100 ; Source tokens/s 226 ; Perplexity 5.49
+[04/22/18 16:16:55 INFO] Epoch 11 ; Iteration 494/494 ; Optim SGD LR 0.240100 ; Source tokens/s 214 ; Perplexity 5.60
+[04/22/18 16:16:55 INFO] Evaluating on the validation dataset...
+[04/22/18 16:17:22 INFO] Validation perplexity: 8.03
+[04/22/18 16:17:22 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch11_8.03.t7'...
+[04/22/18 16:17:25 INFO] 
+[04/22/18 16:22:28 INFO] Epoch 12 ; Iteration 50/494 ; Optim SGD LR 0.168070 ; Source tokens/s 263 ; Perplexity 5.16
+[04/22/18 16:28:15 INFO] Epoch 12 ; Iteration 100/494 ; Optim SGD LR 0.168070 ; Source tokens/s 228 ; Perplexity 5.28
+[04/22/18 16:33:57 INFO] Epoch 12 ; Iteration 150/494 ; Optim SGD LR 0.168070 ; Source tokens/s 238 ; Perplexity 5.28
+[04/22/18 16:39:40 INFO] Epoch 12 ; Iteration 200/494 ; Optim SGD LR 0.168070 ; Source tokens/s 233 ; Perplexity 5.29
+[04/22/18 16:45:32 INFO] Epoch 12 ; Iteration 250/494 ; Optim SGD LR 0.168070 ; Source tokens/s 204 ; Perplexity 5.44
+[04/22/18 16:51:05 INFO] Epoch 12 ; Iteration 300/494 ; Optim SGD LR 0.168070 ; Source tokens/s 226 ; Perplexity 5.28
+[04/22/18 16:56:31 INFO] Epoch 12 ; Iteration 350/494 ; Optim SGD LR 0.168070 ; Source tokens/s 244 ; Perplexity 5.35
+[04/22/18 17:02:10 INFO] Epoch 12 ; Iteration 400/494 ; Optim SGD LR 0.168070 ; Source tokens/s 240 ; Perplexity 5.36
+[04/22/18 17:07:33 INFO] Epoch 12 ; Iteration 450/494 ; Optim SGD LR 0.168070 ; Source tokens/s 237 ; Perplexity 5.36
+[04/22/18 17:12:24 INFO] Epoch 12 ; Iteration 494/494 ; Optim SGD LR 0.168070 ; Source tokens/s 246 ; Perplexity 5.24
+[04/22/18 17:12:24 INFO] Evaluating on the validation dataset...
+[04/22/18 17:12:50 INFO] Validation perplexity: 7.99
+[04/22/18 17:12:50 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch12_7.99.t7'...
+[04/22/18 17:12:54 INFO] 
+[04/22/18 17:18:23 INFO] Epoch 13 ; Iteration 50/494 ; Optim SGD LR 0.117649 ; Source tokens/s 247 ; Perplexity 5.15
+[04/22/18 17:23:46 INFO] Epoch 13 ; Iteration 100/494 ; Optim SGD LR 0.117649 ; Source tokens/s 231 ; Perplexity 5.17
+[04/22/18 17:29:09 INFO] Epoch 13 ; Iteration 150/494 ; Optim SGD LR 0.117649 ; Source tokens/s 232 ; Perplexity 5.21
+[04/22/18 17:34:35 INFO] Epoch 13 ; Iteration 200/494 ; Optim SGD LR 0.117649 ; Source tokens/s 254 ; Perplexity 5.09
+[04/22/18 17:40:23 INFO] Epoch 13 ; Iteration 250/494 ; Optim SGD LR 0.117649 ; Source tokens/s 206 ; Perplexity 5.48
+[04/22/18 17:45:45 INFO] Epoch 13 ; Iteration 300/494 ; Optim SGD LR 0.117649 ; Source tokens/s 239 ; Perplexity 5.21
+[04/22/18 17:51:39 INFO] Epoch 13 ; Iteration 350/494 ; Optim SGD LR 0.117649 ; Source tokens/s 216 ; Perplexity 5.27
+[04/22/18 17:57:11 INFO] Epoch 13 ; Iteration 400/494 ; Optim SGD LR 0.117649 ; Source tokens/s 245 ; Perplexity 5.19
+[04/22/18 18:02:43 INFO] Epoch 13 ; Iteration 450/494 ; Optim SGD LR 0.117649 ; Source tokens/s 251 ; Perplexity 5.15
+[04/22/18 18:07:51 INFO] Epoch 13 ; Iteration 494/494 ; Optim SGD LR 0.117649 ; Source tokens/s 234 ; Perplexity 5.07
+[04/22/18 18:07:51 INFO] Evaluating on the validation dataset...
+[04/22/18 18:08:18 INFO] Validation perplexity: 7.91
+[04/22/18 18:08:18 INFO] Saving checkpoint to '/data/kyoto-100k-model_epoch13_7.91.t7'...

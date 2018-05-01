@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-:github_url: https://github.com/lupinthe14th/mt
+:github_url:
 
 Welcome to mt's documentation!
 ==============================
@@ -23,4 +23,5 @@ Indices and tables
 
 * :ref:`genindex`
 * :ref:`modindex`
+* :ref:`glossary`
 * :ref:`search`

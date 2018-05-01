@@ -125,6 +125,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -137,7 +139,10 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/trial/sentencepiece/100k.rst.txt" rel="nofollow"> View page source</a>
+            
+              <!-- User defined GitHub URL -->
+              <a href="" class="fa fa-github"> Edit on GitHub</a>
+            
           
         
       </li>
@@ -184,31 +189,57 @@
     margin-right: 4px;  /* make room for the exclamation icon */
 }
 </style>
-<p><span class="xref std std-term">KFTT</span> コーパスのtrainデータから、100000 sentenceに絞って学習させる。</p>
+<p><a class="reference internal" href="../../glossary.html#term-kftt"><span class="xref std std-term">KFTT</span></a> コーパスのtrainデータから、100000 sentenceに絞って学習させる。</p>
 <div class="section" id="tokenization-the-data">
 <h1>Tokenization the data<a class="headerlink" href="#tokenization-the-data" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<p><span class="xref std std-term">SentencePiece</span> を用いてトークン化を行う。</p>
+<p><a class="reference internal" href="../../glossary.html#term-sentencepiece"><span class="xref std std-term">SentencePiece</span></a> を用いてトークン化を行う。</p>
 <ol class="arabic">
 <li><p class="first">Train SentencePiece Model</p>
-<p><span class="xref std std-term">SentencePiece</span> でトークン化を行うためのモデルの学習を行う</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> /data/kftt-data-1.0/data/orig
+<p><a class="reference internal" href="../../glossary.html#term-sentencepiece"><span class="xref std std-term">SentencePiece</span></a> でトークン化を行うためのモデルの学習を行う</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">実行コマンド</span><a class="headerlink" href="#id1" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="nb">cd</span> /data/kftt-data-1.0/data/orig
 <span class="gp">#</span> mkdir ../sp
-<span class="gp">#</span> ls <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> f<span class="p">;</span>
-<span class="go">  do</span>
-<span class="go">    /root/sentencepiece/bin/spm_train --input=${f} \</span>
-<span class="go">                                      --model_prefix=../sp/${f} ;</span>
-<span class="go">  done</span>
+<span class="gp">#</span> <span class="nv">list</span><span class="o">=</span><span class="k">$(</span>ls -m <span class="p">|</span> sed -e <span class="s1">&#39;:loop;N;$!b loop;s/\n/ /g&#39;</span> -e <span class="s1">&#39;s/ //g&#39;</span><span class="k">)</span>
+<span class="gp">#</span> /root/sentencepiece/bin/spm_train --input<span class="o">=</span><span class="si">${</span><span class="nv">list</span><span class="si">}</span> <span class="se">\</span>
+                                    --hard_vocab_limit<span class="o">=</span><span class="nb">false</span> <span class="se">\</span>
+                                    --model_prefix<span class="o">=</span>../sp/kyoto-train <span class="se">\</span>
+  &gt; /data/log/spm_train.train.100k.log <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
 </pre></div>
+</div>
 </div>
 </li>
 <li><p class="first">Encode raw text into sentence pieces</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">実行コマンドとログ</span><a class="headerlink" href="#id2" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="nb">cd</span> /root/opennmt/
+<span class="gp">#</span> <span class="k">for</span> f in <span class="k">$(</span>ls /data/kftt-data-1.0/data/orig<span class="k">)</span><span class="p">;</span>
+<span class="go">  do</span>
+<span class="go">    th tools/tokenize.lua -hook_file hooks/sentencepiece \</span>
+<span class="go">                          -sentencepiece /data/kftt-data-1.0/data/sp/kyoto-train.model \</span>
+<span class="go">                          -mode aggressive \</span>
+<span class="go">                          -joiner_annotate \</span>
+<span class="go">                          -save_config /data/config/tokenize.train.100k.${f}.yml \</span>
+<span class="go">                          &lt; /data/kftt-data-1.0/data/orig/${f} \</span>
+<span class="go">                          &gt; /data/kftt-data-1.0/data/sp/${f}.tok ;</span>
+<span class="go">  done</span>
+<span class="go">  Tokenization completed in 0.208 seconds - 1166 sentences</span>
+<span class="go">  Tokenization completed in 0.218 seconds - 1166 sentences</span>
+<span class="go">  Tokenization completed in 0.231 seconds - 1160 sentences</span>
+<span class="go">  Tokenization completed in 0.241 seconds - 1160 sentences</span>
+<span class="go">  Tokenization completed in 96.344 seconds - 440288 sentences</span>
+<span class="go">  Tokenization completed in 109.339 seconds - 440288 sentences</span>
+<span class="go">  Tokenization completed in 0.327 seconds - 1235 sentences</span>
+<span class="go">  Tokenization completed in 0.329 seconds - 1235 sentences</span>
+</pre></div>
+</div>
+</div>
+</li>
+<li><p class="first">絞り込み</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> <span class="k">for</span> l in ja en<span class="p">;</span>
 <span class="go">  do</span>
-<span class="go">    for f in *.${l};</span>
-<span class="go">    do</span>
-<span class="go">      /root/sentencepiece/bin/spm_encode --model=../sp/${l}.model \</span>
-<span class="go">                                         --output_format=piece &lt; ${f} &gt; ../sp/${f}.tok;</span>
-<span class="go">    done;</span>
+<span class="go">    head -100000 /data/kftt-data-1.0/data/sp/kyoto-train.${l}.tok \</span>
+<span class="go">         &gt; /data/kftt-data-1.0/data/sp/kyoto-train.${l}.100k.tok;</span>
 <span class="go">  done</span>
 </pre></div>
 </div>
@@ -217,14 +248,19 @@
 </div>
 <div class="section" id="preprocess-the-data">
 <h1>Preprocess the data<a class="headerlink" href="#preprocess-the-data" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">実行コマンド</span><a class="headerlink" href="#id1" title="このコードへのパーマリンク">¶</a></div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> th preprocess.lua -train_src /data/kftt-data-1.0/data/sp/kyoto-train.ja.100k.tok <span class="se">\</span>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">実行コマンド</span><a class="headerlink" href="#id3" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> th preprocess.lua -hook_file hooks/sentencepiece <span class="se">\</span>
+                    -train_src /data/kftt-data-1.0/data/sp/kyoto-train.ja.100k.tok <span class="se">\</span>
                     -train_tgt /data/kftt-data-1.0/data/sp/kyoto-train.en.100k.tok <span class="se">\</span>
                     -valid_src /data/kftt-data-1.0/data/sp/kyoto-dev.ja.tok <span class="se">\</span>
                     -valid_tgt /data/kftt-data-1.0/data/sp/kyoto-dev.en.tok <span class="se">\</span>
+                    -tok_src_mode aggressive <span class="se">\</span>
+                    -tok_tgt_mode aggressive <span class="se">\</span>
+                    -tok_src_joiner_annotate <span class="nb">true</span> <span class="se">\</span>
+                    -tok_tgt_joiner_annotate <span class="nb">true</span> <span class="se">\</span>
                     -save_data /data/kyoto-train.100k <span class="se">\</span>
-                    -log_file /data/log/train.100k.log <span class="se">\</span>
+                    -log_file /data/log/preprocess.train.100k.log <span class="se">\</span>
                     -save_config /data/config/preprocess.train.100k.yml
 </pre></div>
 </div>
@@ -232,9 +268,14 @@
 </div>
 <div class="section" id="train-the-model">
 <h1>Train the model<a class="headerlink" href="#train-the-model" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-text">実行コマンド</span><a class="headerlink" href="#id2" title="このコードへのパーマリンク">¶</a></div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> th train.lua -data /data/kyoto-train.100k-train.t7 <span class="se">\</span>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">実行コマンド</span><a class="headerlink" href="#id4" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> th train.lua -hook_file hooks/sentencepiece <span class="se">\</span>
+               -data /data/kyoto-train.100k-train.t7 <span class="se">\</span>
+               -tok_src_mode aggressive <span class="se">\</span>
+               -tok_tgt_mode aggressive <span class="se">\</span>
+               -tok_src_joiner_annotate <span class="nb">true</span> <span class="se">\</span>
+               -tok_tgt_joiner_annotate <span class="nb">true</span> <span class="se">\</span>
                -save_model /data/kyoto-100k-model <span class="se">\</span>
                -log_file /data/log/train.train.100k.log <span class="se">\</span>
                -save_config /data/config/train.train.100k.yml
@@ -244,10 +285,10 @@
 </div>
 <div class="section" id="translate">
 <h1>Translate<a class="headerlink" href="#translate" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-text">実行コマンド</span><a class="headerlink" href="#id3" title="このコードへのパーマリンク">¶</a></div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> th translate.lua -model /data/kyoto-100k-model_epoch13_40.45.t7 <span class="se">\</span>
-                   -src /data/kftt-data-1.0/data/tok/kyoto-test.ja <span class="se">\</span>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">実行コマンド</span><a class="headerlink" href="#id5" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> th translate.lua -model /data/kyoto-100k-model_epoch13_7.91.t7 <span class="se">\</span>
+                   -src /data/kftt-data-1.0/data/sp/kyoto-test.ja.tok <span class="se">\</span>
                    -output /data/kyoto-100k-pred.txt <span class="se">\</span>
                    -log_file /data/log/translate.train.100k.log <span class="se">\</span>
                    -save_config /data/config/translate.train.100k.yml
@@ -259,8 +300,8 @@
 <h1>Score<a class="headerlink" href="#score" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <div class="section" id="bleu">
 <h2>BLEU<a class="headerlink" href="#bleu" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-text">実行コマンド</span><a class="headerlink" href="#id4" title="このコードへのパーマリンク">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">実行コマンド</span><a class="headerlink" href="#id6" title="このコードへのパーマリンク">¶</a></div>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> th tools/score.lua /data/kftt-data-1.0/data/tok/kyoto-test.ja <span class="se">\</span>
                      -scorer bleu <span class="se">\</span>
                      -save_config /data/config/score-bleu.train.100k.yml <span class="se">\</span>
@@ -268,17 +309,17 @@
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-text">実行結果</span><a class="headerlink" href="#id5" title="このコードへのパーマリンク">¶</a></div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">0.00                BLEU = 0.00, 0.6/0.0/0.0/0.0 (BP=1.000, ratio=1.302, hyp_len=37105, ref_len=28501)</span>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">実行結果</span><a class="headerlink" href="#id7" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">0.00         BLEU = 0.00, 0.2/0.0/0.0/0.0 (BP=1.000, ratio=1.453, hyp_len=41419, ref_len=28501)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="ter">
 <h2>TER<a class="headerlink" href="#ter" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-text">実行コマンド</span><a class="headerlink" href="#id6" title="このコードへのパーマリンク">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">実行コマンド</span><a class="headerlink" href="#id8" title="このコードへのパーマリンク">¶</a></div>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> th tools/score.lua /data/kftt-data-1.0/data/tok/kyoto-test.ja <span class="se">\</span>
                      -scorer ter <span class="se">\</span>
                      -save_config /data/config/score-ter.train.100k.yml <span class="se">\</span>
@@ -286,17 +327,17 @@
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-text">実行結果</span><a class="headerlink" href="#id7" title="このコードへのパーマリンク">¶</a></div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">133.53               TER = 133.53 (Ins 8.1, Del 2.3, Sub 37.2, Shft 0.0, WdSh 0.0)</span>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">実行結果</span><a class="headerlink" href="#id9" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">149.95          TER = 149.95 (Ins 10.1, Del 3.9, Sub 35.8, Shft 0.0, WdSh 0.0)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="dlratio">
 <h2>DLRATIO<a class="headerlink" href="#dlratio" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="literal-block-wrapper docutils container" id="id8">
-<div class="code-block-caption"><span class="caption-text">実行コマンド</span><a class="headerlink" href="#id8" title="このコードへのパーマリンク">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">実行コマンド</span><a class="headerlink" href="#id10" title="このコードへのパーマリンク">¶</a></div>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> th tools/score.lua /data/kftt-data-1.0/data/tok/kyoto-test.ja <span class="se">\</span>
                      -scorer dlratio <span class="se">\</span>
                      -save_config /data/config/score-dlratio.train.100k.yml <span class="se">\</span>
@@ -304,9 +345,9 @@
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id9">
-<div class="code-block-caption"><span class="caption-text">実行結果</span><a class="headerlink" href="#id9" title="このコードへのパーマリンク">¶</a></div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">144.44               nil</span>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-text">実行結果</span><a class="headerlink" href="#id11" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">148.74          nil</span>
 </pre></div>
 </div>
 </div>
