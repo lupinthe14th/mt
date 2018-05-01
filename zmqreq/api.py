@@ -4,7 +4,7 @@ from argparse import ArgumentParser
 from logging import getLogger
 
 from sanic import Sanic
-from sanic.response import json
+from sanic import response as resp
 
 import sentencepiece as spm
 
@@ -20,7 +20,7 @@ async def transate_handler(request):
     recv = sock.recv_json()
     logger.debug("recv :{}".format(recv))
     logger.debug("type(recv) :{}".format(type(recv)))
-    return json(deTokenize(recv))
+    return resp.json(deTokenize(recv))
 
 
 def tokenize(jsonData):
@@ -68,8 +68,7 @@ if __name__ == '__main__':
 
     # Sentencepiece init
     sp = spm.SentencePieceProcessor()
-    sp.Load("/data/kftt-data-1.0/data/sp/kyoto-train.model")
-    # sp.Load("/data/kftt-data-1.0/data/sp/en.model")
+    sp.Load(app.config['SP_MODEL'])
 
     app.run(debug=args.debug, host=args.host,
             port=args.port, workers=args.workers)

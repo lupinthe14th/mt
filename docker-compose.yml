@@ -13,6 +13,8 @@ services:
     command: th tools/translation_server.lua -config /data/zmqrep.yml
 
   zmqreq:
+    env_file:
+      - ./zmqreq/.env
     image: opennmt/zmqreq:latest
     build:
       context: ./zmqreq
