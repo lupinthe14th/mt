@@ -2,6 +2,8 @@
 *.gz
 *.dict
 *.bz2
+*.env
 
 kftt-data-1.0/
+small-NMT/
 .ipynb_checkpoints/
