@@ -25,3 +25,17 @@ services:
     command: python api.py --port 8080 --host 0.0.0.0 --debug true
     ports:
       - 8080:8080
+
+  frontend:
+    env_file:
+      - ./frontend/.env
+    image: opennmt/frontend:latest
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend:/home/node/frontend
+    working_dir: /home/node/frontend/app
+    command: yarn dev
+    ports:
+      - 80:8080
