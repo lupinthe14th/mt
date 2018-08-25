@@ -25,6 +25,8 @@ services:
     command: python api.py --port 8080 --host 0.0.0.0 --debug true
     ports:
       - 8080:8080
+    depends_on:
+      - zmqrep
 
   frontend:
     env_file:
@@ -38,4 +40,6 @@ services:
     working_dir: /home/node/frontend/app
     command: yarn dev
     ports:
-      - 80:8080
+      - 8081:8081
+    depends_on:
+      - zmqreq
