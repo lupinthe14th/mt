@@ -1,14 +1,45 @@
 <template>
   <div id="app">
-    <div id="main" class="has-text-centered">
-      <h1 class="title is-1">VUE PARTICLES IS ASESOME</h1>
+    <div id="main" class="has-text-justified">
+      <h1 class="title is-1">Translation</h1>
+      <h4 class="subtitle is-4">テキストボックスの文章をOpenNMTで作成した学習モデルで翻訳した結果を表示します。</h4>
+      <div class="columns">
+        <div class="column">
+          <article class="message">
+            <div class="message-header">
+              <p>原文</p>
+            </div>
+            <div class="message-body">
+              <form v-on:submit.prevent="translate">
+                <textarea class="textarea" v-model="src" name='src' value=''></textarea>
+                <button class="button is-light">
+                  <span class="icon">
+                    <font-awesome-icon prefix="fas" icon="language" />
+                  </span>
+                  <span>翻訳</span>
+                </button>
+              </form>
+            </div>
+          </article>
+        </div>
+        <div class="column">
+          <article class="message">
+            <div class="message-header">
+              <p>訳文</p>
+            </div>
+            <div class="message-body">
+              <div v-for="translations in translationList" :key="translations.id">
+                <div v-for="translation in translations" :key="translation.id">
+              <p>{{ translation.tgt }}</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
       <a href="https://bulma.io" target="_blank">
         <img src="https://bulma.io/images/made-with-bulma.png" alt="Made with Bulma" width="128" height="24">
       </a>
-  <form v-on:submit.prevent="translate">
-<p>description:<textarea v-model="src" name='src' value=''></textarea></p>
-<button class="btn btn-primary">translate</button>
-      </form>
     </div>
     <vue-particles
       color="#dedede"
@@ -37,19 +68,41 @@ export default {
   name: 'App',
   data () {
     return {
-      src: {}
+      src: '',
+      translationList: ''
+    }
+  },
+  computed: {
+    payload: function () {
+      console.log('src: ', this.src)
+      let srcList = this.src.split(/\n/)
+      let payload = []
+      console.log('srcList: ', srcList)
+      srcList.forEach(value => {
+        console.log('value', value)
+        payload.push({ src: value })
+      })
+      return payload
     }
   },
   methods: {
-    translate: function () {
-      let uri = 'http://zmqreq:8080/transate'
-      axios.post(uri, {
-        src: this.src
-      })
-        .then(function (response) {
-          console.log(response)
-        }).catch(function (error) {
-          console.log(error)
+    translate: function (event) {
+      event.preventDefault()
+      let uri = 'http://localhost:8080/transate'
+      axios
+        .post(uri, this.payload, {
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8'
+          }
+        })
+        .then(response => {
+          console.log('status: ', response.status)
+          console.log('data: ', response.data)
+          this.translationList = response.data
+          console.log('translationList: ', this.translationList)
+        })
+        .catch(error => {
+          console.log('error: ', error)
         })
     }
   }
@@ -57,13 +110,15 @@ export default {
 </script>
 
 <style>
-html, body, #app {
-    height: 100%;
+html,
+body,
+#app {
+  height: 100%;
 }
 
 #app {
   position: relative;
-  background-image: url('./assets/image/bgimage.jpeg');
+  background-image: url("./assets/image/bgimage.jpeg");
   background-size: cover;
 }
 
@@ -77,6 +132,11 @@ html, body, #app {
 h1 {
   color: #ffffff !important;
   text-shadow: 5px 5px 0px #000000;
-  font-family: 'Dosis', sans-serif;
+  font-family: "Dosis", sans-serif;
+}
+h4 {
+  color: #ffffff !important;
+  text-shadow: 5px 5px 0px #000000;
+  font-family: "Dosis", sans-serif;
 }
 </style>
