@@ -9,19 +9,19 @@ RUN set -x \
         autoconf \
         automake \
         build-base \
+        cmake \
         git \
         libtool \
-        protobuf-dev \
         pkgconfig \
+        protobuf-dev \
     && git clone  https://github.com/google/sentencepiece \
     && cd sentencepiece \
-    && ./autogen.sh \
-    && ./configure \
-    && CPUCOUNT=$(cat /proc/cpuinfo | grep '^processor.*:' | wc -l)  \
-    && make -j ${CPUCOUNT} \
-    && make check \
-#    && ldconfig -v \
+    && mkdir build \
+    && cd build \
+    && cmake .. \
+    && make -j $(nproc) \
     && make install \
+    # && ldconfig -v \
     ## cleanup
     && make clean
 

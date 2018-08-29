@@ -1,16 +1,17 @@
-import zmq
 from argparse import ArgumentParser
-
 from logging import getLogger
 
+import zmq
 from sanic import Sanic
 from sanic import response as resp
+from sanic_cors import CORS
 
 import sentencepiece as spm
 
 logger = getLogger('root')
 
 app = Sanic()
+CORS(app)
 
 
 @app.route('/transate', methods=['POST'])
