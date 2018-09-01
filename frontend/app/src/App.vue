@@ -1,29 +1,28 @@
 <template>
   <div id="app">
     <div id="main" class="has-text-justified">
-      <h1 class="title is-1">Translation</h1>
+      <h1 class="title is-1">
+        <font-awesome-icon prefix="fas" icon="language" />
+        Translation</h1>
       <div class="tile is-ancestor">
         <div class="tile is-parent">
           <article class="tile is-child box">
             <p class="title">原文</p>
             <p class="subtitle">日本語</p>
-            <form v-on:submit.prevent="translate">
-              <textarea class="content textarea"
-                        @input="textareaResize"
-                        @keyup.capture="translate"
-                        ref="textarea"
-                        v-model="src"
-                        name='src'
-                        value=''>
-                <font-awesome-icon prefix="fas" icon="backspace" v-on:click="clear()" />
-              </textarea>
-              <button class="button is-light">
-                <span class="icon">
-                  <font-awesome-icon prefix="fas" icon="language" />
-                </span>
-                <span>翻訳</span>
-              </button>
-            </form>
+            <div id="textarea">
+            <textarea class="content textarea"
+                      @input="textareaResize"
+                      @keyup.capture="translate"
+                      ref="textarea"
+                      v-model="src"
+                      name='src'
+                      value=''
+                      placeholder='テキストを入力'
+                      />
+              <font-awesome-icon id="clearButton"
+                                 v-show="Object.keys(this.src).length"
+                prefix="fas" icon="backspace" v-on:click="clear()" />
+            </div>
           </article>
         </div>
         <div class="tile is-parent">
@@ -103,8 +102,7 @@ export default {
     clear: function () {
       Object.assign(this.$data, this.$options.data.call(this))
     },
-    translate: function (event) {
-      event.preventDefault()
+    translate: function () {
       let uri = 'http://localhost:8080/transate'
       axios
         .post(uri, this.payload, {
@@ -140,7 +138,17 @@ body,
   position: absolute;
   width: 99%;
 }
-
+#textarea {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+#clearButton {
+  position: absolute;
+  right: 2px;
+  top: 1px;
+  cursor: pointer;
+}
 h1 {
   color: #ffffff !important;
   text-shadow: 5px 5px 0px #000000;
