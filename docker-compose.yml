@@ -38,7 +38,7 @@ services:
     volumes:
       - ./frontend:/home/node/frontend
     working_dir: /home/node/frontend/app
-    command: yarn
+    command: yarn start
     ports:
       - 8081:8081
     depends_on:
