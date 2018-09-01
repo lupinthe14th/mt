@@ -2,7 +2,7 @@
   <div id="app">
     <div id="main" class="has-text-justified">
       <h1 class="title is-1">
-        <font-awesome-icon prefix="fas" icon="language" />
+        <font-awesome-icon :icon="['fas','language']" />
         Translation</h1>
       <div class="tile is-ancestor">
         <div class="tile is-parent">
@@ -21,7 +21,7 @@
                       />
               <font-awesome-icon id="clearButton"
                                  v-show="Object.keys(this.src).length"
-                prefix="fas" icon="backspace" v-on:click="clear()" />
+                :icon="['far','times-circle']" v-on:click="clear()" />
             </div>
           </article>
         </div>
@@ -146,7 +146,7 @@ body,
 #clearButton {
   position: absolute;
   right: 2px;
-  top: 1px;
+  top: 2px;
   cursor: pointer;
 }
 h1 {
