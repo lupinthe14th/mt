@@ -12,7 +12,7 @@ library.add(fas)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
 
-require('./assets/scss/main.scss')
+require('./assets/sass/main.scss')
 Vue.use(VueParticles)
 
 /* eslint-disable no-new */
