@@ -8,7 +8,15 @@
             <p class="title">原文</p>
             <p class="subtitle">日本語</p>
             <form v-on:submit.prevent="translate">
-              <textarea class="content textarea" v-model="src" name='src' value=''></textarea>
+              <textarea class="content textarea"
+                        @input="textareaResize"
+                        @keyup.capture="translate"
+                        ref="textarea"
+                        v-model="src"
+                        name='src'
+                        value=''>
+                <font-awesome-icon prefix="fas" icon="backspace" v-on:click="clear()" />
+              </textarea>
               <button class="button is-light">
                 <span class="icon">
                   <font-awesome-icon prefix="fas" icon="language" />
@@ -77,12 +85,24 @@ export default {
       console.log('srcList: ', srcList)
       srcList.forEach(value => {
         console.log('value', value)
-        payload.push({ src: value })
+        if (!value) {
+          console.log('value is null or undefined or ""')
+        } else {
+          payload.push({ src: value })
+        }
       })
+      console.log('payload', payload)
       return payload
     }
   },
   methods: {
+    textareaResize () {
+      this.$refs.textarea.style.minHeight =
+        this.$refs.textarea.scrollHeight + 'px'
+    },
+    clear: function () {
+      Object.assign(this.$data, this.$options.data.call(this))
+    },
     translate: function (event) {
       event.preventDefault()
       let uri = 'http://localhost:8080/transate'
@@ -111,9 +131,6 @@ html,
 body,
 #app {
   height: 100%;
-}
-
-#app {
   position: relative;
   background-image: url("./assets/image/bgimage.jpeg");
   background-size: cover;
@@ -121,9 +138,6 @@ body,
 
 #main {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateY(-50%) translateX(-50%);
   width: 99%;
 }
 
