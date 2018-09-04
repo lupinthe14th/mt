@@ -22,6 +22,8 @@
                       id="clearButton"
                       v-show="Object.keys(this.src).length"
                       v-on:click="clear()" />
+                      <span class="is-small"
+                      id="counter">{{ counter }}</span>
             </div>
           </article>
         </div>
@@ -76,6 +78,9 @@ export default {
     }
   },
   computed: {
+    counter: function () {
+      return this.src.length
+    },
     payload: function () {
       console.log('src: ', this.src)
       let srcList = this.src.split(/\n/)
@@ -155,6 +160,11 @@ body,
   right: 2px;
   top: 2px;
   cursor: pointer;
+}
+#counter {
+  position: absolute;
+  right: 2px;
+  bottom: 4px;
 }
 h1 {
   color: #ffffff !important;
