@@ -1,4 +1,4 @@
-# try-vue-particles
+# mt
 
 > A Vue.js project
 
