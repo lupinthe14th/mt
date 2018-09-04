@@ -107,7 +107,8 @@ export default {
       Object.assign(this.$data, this.$options.data.call(this))
     },
     translate: async function () {
-      let uri = 'http://localhost:8080/transate'
+      console.log('API_ENDPOINT', process.env.API_ENDPOINT)
+      let uri = process.env.API_ENDPOINT
       await axios
         .post(uri, this.payload, {
           headers: {
