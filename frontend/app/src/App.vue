@@ -18,6 +18,7 @@
                       name='src'
                       value=''
                       placeholder='テキストを入力'
+                      rows="5"
                       />
               <font-awesome-icon id="clearButton"
                                  v-show="Object.keys(this.src).length"
