@@ -7,6 +7,9 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import _ from 'lodash'
+
+Object.defineProperty(Vue.prototype, '$_', { value: _ })
 
 library.add(fas, far)
 

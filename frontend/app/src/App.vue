@@ -3,16 +3,14 @@
     <div id="main" class="has-text-justified">
       <h1 class="title is-1">
         <font-awesome-icon :icon="['fas','language']" />
-        Translation</h1>
+        翻訳</h1>
       <div class="tile is-ancestor">
         <div class="tile is-parent">
           <article class="tile is-child box">
-            <p class="title">原文</p>
-            <p class="subtitle">日本語</p>
+            <p class="title">日本語</p>
             <div id="textarea">
             <textarea class="content textarea"
                       @input="textareaResize"
-                      @keyup.capture="translate"
                       ref="textarea"
                       v-model="src"
                       name='src'
@@ -20,16 +18,16 @@
                       placeholder='テキストを入力'
                       rows="5"
                       />
-              <font-awesome-icon id="clearButton"
-                                 v-show="Object.keys(this.src).length"
-                :icon="['far','times-circle']" v-on:click="clear()" />
+                      <a class="delete is-small"
+                      id="clearButton"
+                      v-show="Object.keys(this.src).length"
+                      v-on:click="clear()" />
             </div>
           </article>
         </div>
         <div class="tile is-parent">
           <article class="tile is-child box">
-            <p class="title">訳文</p>
-            <p class="subtitle">英語</p>
+            <p class="title">英語</p>
             <div v-for="translations in translationList" :key="translations.id">
               <div v-for="translation in translations" :key="translation.id">
                 <p class="content">{{ translation.tgt }}</p>
@@ -103,9 +101,9 @@ export default {
     clear: function () {
       Object.assign(this.$data, this.$options.data.call(this))
     },
-    translate: function () {
+    translate: async function () {
       let uri = 'http://localhost:8080/transate'
-      axios
+      await axios
         .post(uri, this.payload, {
           headers: {
             'Content-Type': 'text/plain;charset=utf-8'
@@ -121,6 +119,14 @@ export default {
           console.log('error: ', error)
         })
     }
+  },
+  watch: {
+    src: function () {
+      this.debouncedTranslate()
+    }
+  },
+  created: function () {
+    this.debouncedTranslate = this.$_.debounce(this.translate, 500)
   }
 }
 </script>
