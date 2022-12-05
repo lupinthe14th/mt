@@ -1,5 +1,5 @@
 # ビルド環境
-FROM node:10.9.0-alpine as build-stage
+FROM node:10.24.1-alpine as build-stage
 WORKDIR /app
 COPY client/package*.json ./
 COPY client .
